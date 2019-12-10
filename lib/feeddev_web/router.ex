@@ -34,8 +34,10 @@ defmodule FeeddevWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", FeeddevWeb do
-  #   pipe_through :api
-  # end
+
+  scope "/api", FeeddevWeb do
+     pipe_through :api
+
+     resources "/survey", SurveyController
+  end
 end
