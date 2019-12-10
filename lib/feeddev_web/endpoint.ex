@@ -40,7 +40,10 @@ defmodule FeeddevWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_feeddev_key",
-    signing_salt: "1u9mQG/T"
+    signing_salt: "Iy6A1ywS"
+
+  plug Pow.Plug.Session, otp_app: :feeddev
 
   plug FeeddevWeb.Router
+
 end
