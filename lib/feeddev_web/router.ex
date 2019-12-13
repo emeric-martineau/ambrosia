@@ -16,9 +16,14 @@ defmodule FeeddevWeb.Router do
     plug :accepts, ["json"]
   end
 
+  # Protect by HTML page with login box
   pipeline :protected do
     plug Pow.Plug.RequireAuthenticated,
          error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  pipeline :api_protected do
+    plug Pow.Plug.RequireAuthenticated, error_handler: FeeddevWeb.ApiAuthErrorHandler
   end
 
   scope "/" do
@@ -34,9 +39,15 @@ defmodule FeeddevWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api/", FeeddevWeb.Api, as: :api_v1 do
+    pipe_through :api
 
-  scope "/api", FeeddevWeb do
-     pipe_through :api
+    resources "/session", SessionController, singleton: true, only: [:create, :delete]
+    post "/session/renew", SessionController, :renew
+  end
+
+  scope "/api/v1", FeeddevWeb do
+     pipe_through [:api, :api_protected]
 
      resources "/survey", SurveyController
   end
