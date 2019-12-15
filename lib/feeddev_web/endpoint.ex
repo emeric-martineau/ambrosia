@@ -13,7 +13,7 @@ defmodule FeeddevWeb.Endpoint do
     at: "/",
     from: :feeddev,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js favicon.ico robots.txt vendor)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

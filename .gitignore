@@ -35,3 +35,6 @@ npm-debug.log
 
 # IntelliJ
 *.iml
+
+# Semantic UI
+/assets/semantic/dist/
