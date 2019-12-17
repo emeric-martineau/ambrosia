@@ -38,6 +38,7 @@ module.exports = (env, options) => ({
     new MiniCssExtractPlugin({ filename: '../css/app.css' }),
     new CopyWebpackPlugin([{ from: 'static', to: '../' }]),
     new CopyWebpackPlugin([{ from: 'semantic/dist/semantic.min.css', to: '../css/' }]),
+    new CopyWebpackPlugin([{ from: 'semantic/dist/themes/default', to: '../css/themes/default' }]),
     new CopyWebpackPlugin([{ from: 'semantic/dist/semantic.min.js', to: '../js/' }])
   ]
 });
