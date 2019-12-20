@@ -1,35 +1,87 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
-</section>
+  <div class="ui inverted vertical center aligned masthead segment">
+     <div class="ui text container">
+        <h1 class="ui inverted header">
+          <%= gettext "Welcome to %{name}!", name: "Phoenix" %>
+        </h1>
+        <h2>A productive web framework that<br/>does not compromise speed or maintainability.</h2>
+        <a class="ui huge primary button" href="https://hexdocs.pm/phoenix/overview.html">Get Started <i class="right arrow icon"></i></a>
+      </div>
+  </div>
 
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">v1.4 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-    </ul>
-  </article>
-</section>
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column">
+          <h3 class="ui header">A bundle under steroid!</h3>
+          <p>This bundle include pre-configured Phoenix framework, with Pow for authentification.</p>
+          <p>The pages are beautiful thanks to Semantic UI</p>
+          <h3 class="ui header">API rest ready!</h3>
+          <p>Preconfgured for API rest design!</p>
+        </div>
+        <div class="six wide right floated column">
+          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo">
+        </div>
+      </div>
+      <div class="row">
+        <div class="center aligned column">
+          <a class="ui huge button">Check Them Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui vertical stripe quote segment">
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column">
+          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo">
+          <p>&nbsp;</p>
+          <p>A productive web framework that<br/>
+          does not compromise speed or maintainability.</p>
+          <a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a>
+        </div>
+        <div class="column">
+          <img src="<%= Routes.static_path(@conn, "/images/elixir.png") %>" alt="Elixir Language Logo">
+          <p>&nbsp;</p>
+          <p>Elixir is a dynamic, functional language designed<br/>
+          for building scalable and maintainable applications.</p>
+          <a href="https://elixir-lang.org/learning.html">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui vertical stripe quote segment">
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column">
+          <img src="<%= Routes.static_path(@conn, "/images/pow.png") %>" alt="Pow Framework Logo">
+          <p>&nbsp;</p>
+          <p>Pow is a complete authentication and user management<br/>
+          library built in Elixir that works out-of-the-box for Phoenix</p>
+          <a href="https://hexdocs.pm/pow/README.html#getting-started">Get Started</a>
+        </div>
+
+        <div class="column">
+          <img src="<%= Routes.static_path(@conn, "/images/semantic-ui.png") %>" alt="Semantic UI Language Logo">
+          <p>&nbsp;</p>
+          <p>User Interface is the language of the web.</p>
+          <a href="https://semantic-ui.com/introduction/getting-started.html">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui vertical stripe segment">
+    <div class="ui text container">
+      <h3 class="ui header">Breaking The Grid, Grabs Your Attention</h3>
+      <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
+      <a class="ui large button">Read More</a>
+      <h4 class="ui horizontal header divider">
+        <a href="#">Case Studies</a>
+      </h4>
+      <h3 class="ui header">Did We Tell You About Our Bananas?</h3>
+      <p>Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
+      <a class="ui large button">I'm Still Quite Interested</a>
+    </div>
+  </div>
