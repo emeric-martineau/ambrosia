@@ -3,7 +3,6 @@ defmodule FeeddevWeb.Api.SessionController do
 
   alias FeeddevWeb.ApiAuthPlug
   alias Plug.Conn
-  alias Pow.Config
 
   defp login(conn) do
     user = conn.assigns.current_user
@@ -11,7 +10,7 @@ defmodule FeeddevWeb.Api.SessionController do
 
     {conn, _} =
       conn
-      |> ApiAuthPlug.create user, config
+      |> ApiAuthPlug.create(user, config)
 
     conn
     |> json(%{data: %{token: conn.private[:api_auth_token], renew_token: conn.private[:api_renew_token]}})

@@ -55,7 +55,7 @@
       <div class="right menu">
         <%= if Pow.Plug.current_user(@conn) do %>
           <div class="item">
-            <%= link "Log out", class: "ui button", to: Routes.pow_session_path(@conn, :delete), method: :delete %>
+            <%= link "Log out", class: "ui button", to: Routes.page_path(@conn, :logout) %>
           </div>
         <% else %>
           <div class="item">
@@ -71,22 +71,12 @@
 
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
-  <a class="active item">Home</a>
-  <a class="item">Work</a>
-  <a class="item">Company</a>
-  <a class="item">Careers</a>
-  <a class="item">Login</a>
-  <a class="item">Signup</a>
-</div>
-
-<!-- Sidebar Menu -->
-<div class="ui vertical inverted sidebar menu">
     <%= link "Home", class: "active item", to: "/" %>
     <a class="item" href="https://www.phoenixframework.org">Phoenix</a>
     <a class="item" href="https://elixir-lang.org">Elixir</a>
     <a class="item" href="https://www.erlang.org">Erlang</a>
     <%= if Pow.Plug.current_user(@conn) do %>
-        <%= link "Log out", class: "ui item", to: Routes.pow_session_path(@conn, :delete), method: :delete %>
+        <%= link "Log out", class: "ui item", to: Routes.page_path(@conn, :logout) %>
     <% else %>
         <%= link "Sign Up", class: "ui item", to: Routes.pow_registration_path(@conn, :new) %>
         <%= link "Log in", class: "ui item", to: Routes.pow_session_path(@conn, :new) %>
@@ -108,7 +98,7 @@
         <a class="item" href="https://www.erlang.org">Erlang</a>
         <div class="right item">
           <%= if Pow.Plug.current_user(@conn) do %>
-            <%= link "Log out", class: "ui inverted button", to: Routes.pow_session_path(@conn, :delete), method: :delete %>
+            <%= link "Log out", class: "ui inverted button", to: Routes.page_path(@conn, :logout) %>
           <% else %>
             <%= link "Sign Up", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :new) %>
             <span class="button-space-menu"></span>
@@ -117,9 +107,6 @@
         </div>
       </div>
     </div>
-
-    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
   </div>
 
