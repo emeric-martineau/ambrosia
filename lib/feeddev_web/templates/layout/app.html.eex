@@ -55,6 +55,9 @@
       <div class="right menu">
         <%= if Pow.Plug.current_user(@conn) do %>
           <div class="item">
+            <%= link "Edit profile", class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
+          </div>
+          <div class="item">
             <%= link "Log out", class: "ui button", to: Routes.page_path(@conn, :logout) %>
           </div>
         <% else %>
@@ -76,6 +79,7 @@
     <a class="item" href="https://elixir-lang.org">Elixir</a>
     <a class="item" href="https://www.erlang.org">Erlang</a>
     <%= if Pow.Plug.current_user(@conn) do %>
+        <%= link "Edit profile", class: "ui item", to: Routes.pow_registration_path(@conn, :edit) %>
         <%= link "Log out", class: "ui item", to: Routes.page_path(@conn, :logout) %>
     <% else %>
         <%= link "Register", class: "ui item", to: Routes.pow_registration_path(@conn, :new) %>
@@ -98,6 +102,8 @@
         <a class="item" href="https://www.erlang.org">Erlang</a>
         <div class="right item">
           <%= if Pow.Plug.current_user(@conn) do %>
+            <%= link "Edit profile", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :edit) %>
+            <span class="button-space-menu"></span>
             <%= link "Log out", class: "ui inverted button", to: Routes.page_path(@conn, :logout) %>
           <% else %>
             <%= link "Register", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :new) %>
