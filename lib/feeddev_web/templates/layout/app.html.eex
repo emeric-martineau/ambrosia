@@ -59,10 +59,10 @@
           </div>
         <% else %>
           <div class="item">
-            <%= link "Sign Up", class: "ui primary button", to: Routes.pow_registration_path(@conn, :new) %>
+            <%= link "Register", class: "ui primary button", to: Routes.pow_registration_path(@conn, :new) %>
           </div>
           <div class="item">
-            <%= link "Log in", class: "ui button", to: Routes.pow_session_path(@conn, :new) %>
+            <%= link "Sign in", class: "ui button", to: Routes.pow_session_path(@conn, :new) %>
           </div>
         <% end %>
     </div>
@@ -78,8 +78,8 @@
     <%= if Pow.Plug.current_user(@conn) do %>
         <%= link "Log out", class: "ui item", to: Routes.page_path(@conn, :logout) %>
     <% else %>
-        <%= link "Sign Up", class: "ui item", to: Routes.pow_registration_path(@conn, :new) %>
-        <%= link "Log in", class: "ui item", to: Routes.pow_session_path(@conn, :new) %>
+        <%= link "Register", class: "ui item", to: Routes.pow_registration_path(@conn, :new) %>
+        <%= link "Sign in", class: "ui item", to: Routes.pow_session_path(@conn, :new) %>
     <% end %>
 </div>
 
@@ -100,9 +100,9 @@
           <%= if Pow.Plug.current_user(@conn) do %>
             <%= link "Log out", class: "ui inverted button", to: Routes.page_path(@conn, :logout) %>
           <% else %>
-            <%= link "Sign Up", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :new) %>
+            <%= link "Register", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :new) %>
             <span class="button-space-menu"></span>
-            <%= link "Log in", class: "ui inverted button", to: Routes.pow_session_path(@conn, :new) %>
+            <%= link "Sign in", class: "ui inverted button", to: Routes.pow_session_path(@conn, :new) %>
           <% end %>
         </div>
       </div>

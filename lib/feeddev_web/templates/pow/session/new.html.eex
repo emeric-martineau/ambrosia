@@ -2,6 +2,8 @@
   <div class="ui centered grid container">
     <div class="nine wide column">
 
+      <h1>Connect</h1>
+
       <%= if get_flash(@conn, :error) do %>
       <div class="ui icon warning message">
         <i class="lock icon"></i>
@@ -32,7 +34,7 @@
 
           <button class="ui primary labeled icon button" type="submit">
             <i class="unlock alternate icon"></i>
-            Login
+            Sign in
           </button>
           <% end %>
         </div>
