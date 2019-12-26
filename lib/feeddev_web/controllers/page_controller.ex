@@ -5,7 +5,7 @@ defmodule FeeddevWeb.PageController do
     render(conn, "index.html")
   end
 
-  # Because data-method="delete" not always working
+  # Because <a href="" data-method="delete"> not always working
   def logout(conn, _) do
     {:ok, conn} = Pow.Plug.clear_authenticated_user(conn)
 
