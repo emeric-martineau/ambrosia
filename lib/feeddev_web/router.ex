@@ -41,13 +41,6 @@ defmodule FeeddevWeb.Router do
     get "/session/logout", PageController, :logout
   end
 
-  scope "/api/", FeeddevWeb.Api, as: :api_v1 do
-    pipe_through :api
-
-    resources "/session", SessionController, singleton: true, only: [:create, :delete]
-    post "/session/renew", SessionController, singleton: true, only: [:renew]
-  end
-
   scope "/api/v1", FeeddevWeb do
      pipe_through [:api, :api_protected]
 

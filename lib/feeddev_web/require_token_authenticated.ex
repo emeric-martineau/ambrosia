@@ -17,7 +17,7 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
   def init(config) do
     Pow.Plug.RequireAuthenticated.init(config)
   end
-
+# TODO put Pow.Plug.RequireAuthenticated in handler
   @doc false
   @spec call(Conn.t(), atom()) :: Conn.t()
   def call(conn, handler) do
@@ -53,7 +53,7 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
 
   defp authorize("token", auth, conn, _handler) do
     IO.inspect("token")
-
+# TODO create users_token table with user_id, token, create_date
     config = Pow.Plug.fetch_config(conn)
     IO.inspect("--------------------------------------------------------------------------------------")
     Pow.Operations.get_by([id: 79], config)
@@ -64,7 +64,13 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
     conn
   end
 
-  defp authorize_basic({:ok, credential}, conn, _handler) do
+  defp authorize(method, _auth, conn, _handler) do
+    conn
+    |> Conn.resp(400, "Authorization protocol '#{method}' not available!")
+    |> Conn.halt()
+  end
+
+  defp authorize_basic({:ok, credential}, conn, handler) do
     [user, password] = String.split(credential, ":")
 
     user_params = %{"email" => user, "password" => password}
@@ -75,7 +81,7 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
          {:ok, conn} -> conn
          {:error, conn} ->
            conn
-           |> Conn.resp(401, "Invalid credentials.")
+           |> handler.call(:not_authenticated)
            |> Conn.halt()
        end
   end
@@ -83,14 +89,6 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
   defp authorize_basic(:error, conn, _handler) do
     conn
     |> Conn.resp(500, "Invalid Authorization Basic information! Base64 error.")
-    |> Conn.halt()
-  end
-
-  defp maybe_halt(_user, conn, _handler), do: conn
-
-  defp maybe_halt(nil, conn, handler) do
-    conn
-    |> handler.call(:not_authenticated)
     |> Conn.halt()
   end
 
