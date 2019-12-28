@@ -23,7 +23,6 @@ defmodule FeeddevWeb.Router do
   end
 
   pipeline :api_protected do
-    # Pow.Plug.RequireAuthenticated
     plug FeeddevWeb.RequireTokenAuthenticated, error_handler: FeeddevWeb.ApiAuthErrorHandler
   end
 
