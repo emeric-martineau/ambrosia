@@ -24,7 +24,6 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
   end
 
   # TODO add generate token page
-  # TODO all resp -> call handler
   @doc false
   @spec call(Conn.t(), atom()) :: Conn.t()
   def call(conn, handler) do
@@ -83,9 +82,9 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
   # The header Authorisation is found but method not implement.
   # Return HTTP code 400 and stop request.
   @spec authorize(String.t(), nil, Conn.t(), nil) :: Conn.t()
-  defp authorize(method, _auth, conn, _handler) do
+  defp authorize(_method, _auth, conn, handler) do
     conn
-    |> Conn.resp(400, "Authorization protocol '#{method}' not available!")
+    |> handler.call(:error_protocol)
     |> Conn.halt()
   end
 
@@ -112,9 +111,9 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
   # The header Authorisation with method Basic is found. But the Base64 decode has error.
   # Return HTTP code 500 and stop the request.
   @spec authorize_basic(:error, Conn.t(), nil) :: Conn.t()
-  defp authorize_basic(:error, conn, _handler) do
+  defp authorize_basic(:error, conn, handler) do
     conn
-    |> Conn.resp(500, "Invalid Authorization Basic information! Base64 error.")
+    |> handler.call(:invalid_authorization_basic)
     |> Conn.halt()
   end
 

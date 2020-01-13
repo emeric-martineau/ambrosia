@@ -8,4 +8,18 @@ defmodule FeeddevWeb.ApiAuthErrorHandler do
     |> put_status(401)
     |> json(%{error: %{code: 401, message: "Not authenticated"}})
   end
+
+  @spec call(Conn.t(), :invalid_authorization_basic) :: Conn.t()
+  def call(conn, :invalid_authorization_basic) do
+    conn
+    |> put_status(500)
+    |> json(%{error: %{code: 500, message: "Invalid Authorization Basic information! Base64 error"}})
+  end
+
+  @spec call(Conn.t(), :error_protocol) :: Conn.t()
+  def call(conn, :error_protocol) do
+    conn
+    |> put_status(500)
+    |> json(%{error: %{code: 400, message:  "This authorization protocol not available!"}})
+  end
 end
