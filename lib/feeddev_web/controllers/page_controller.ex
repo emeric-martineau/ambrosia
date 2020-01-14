@@ -19,7 +19,6 @@ defmodule FeeddevWeb.PageController do
   end
 
   # Call from edit profile to generate token
-  # TODO check if user login
   def generate_token(conn, _params = %{"token" => token_form}) do
     config = Plug.fetch_config(conn)
     user = Plug.current_user(conn)

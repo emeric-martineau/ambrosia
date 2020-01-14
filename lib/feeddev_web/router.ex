@@ -37,8 +37,14 @@ defmodule FeeddevWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/session/logout", PageController, :logout
-    post "/session/generate_token", PageController, :generate_token
+  end
+
+  scope "/profile", FeeddevWeb do
+    pipe_through [:browser, :protected]
+
+    get "/", PageController, :index
+    get "/logout", PageController, :logout
+    post "/generate_token", PageController, :generate_token
   end
 
   scope "/api/v1", FeeddevWeb do
