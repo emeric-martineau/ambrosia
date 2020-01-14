@@ -38,6 +38,7 @@ defmodule FeeddevWeb.Router do
 
     get "/", PageController, :index
     get "/session/logout", PageController, :logout
+    post "/session/generate_token", PageController, :generate_token
   end
 
   scope "/api/v1", FeeddevWeb do

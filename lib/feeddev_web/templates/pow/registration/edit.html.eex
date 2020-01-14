@@ -57,6 +57,29 @@
         </div>
       </div>
 
+      <h1>Token</h1>
+
+      <div class="ui fluid card">
+        <div class="content">
+          <%= form_for @conn,  Routes.page_path(@conn, :generate_token) , [as: :token, class: "ui form"], fn f -> %>
+          <%= hidden_input f, :return_page, value: @conn.request_path %>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= password_input f, :current_password, placeholder: "Current password" %>
+            </div>
+          </div>
+
+          <button class="ui button" type="submit">
+            Generate new token
+          </button>
+
+
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

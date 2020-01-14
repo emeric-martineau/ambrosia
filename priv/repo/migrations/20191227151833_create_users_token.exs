@@ -5,7 +5,7 @@ defmodule Feeddev.Repo.Migrations.CreateUsersToken do
     create table(:users_token) do
       add :create_at, :date
       add :token, :string, null: true
-      add :user_id, references(:users, on_delete: :nothing)
+      add :user_id, references(:users), on_delete: :nothing, null: false
 
       timestamps()
     end

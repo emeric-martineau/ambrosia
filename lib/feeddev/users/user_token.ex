@@ -3,9 +3,8 @@ defmodule Feeddev.Users.UserToken do
   import Ecto.Changeset
 
   schema "users_token" do
-    field :create_at, :date
     field :token, :string
-    field :user_id, :id
+    belongs_to :user, Feeddev.Users.User
 
     timestamps()
   end
@@ -13,7 +12,8 @@ defmodule Feeddev.Users.UserToken do
   @doc false
   def changeset(user_token, attrs) do
     user_token
-    |> cast(attrs, [:create_at, :token])
-    |> validate_required([:create_at, :token])
+    |> cast(attrs, [:token])
+    |> Ecto.Changeset.put_assoc(:user, attrs.user)
+    |> validate_required([:token, :user])
   end
 end
