@@ -44,7 +44,8 @@ defmodule FeeddevWeb.Router do
 
     get "/", PageController, :index
     get "/logout", PageController, :logout
-    post "/generate_token", PageController, :generate_token
+    get "/advanced", Users.AdvancedConfigUserController, :index
+    post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
   end
 
   scope "/api/v1", FeeddevWeb do

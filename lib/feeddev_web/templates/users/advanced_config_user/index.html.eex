@@ -1,0 +1,51 @@
+<div class="page-login">
+  <div class="ui centered grid container">
+    <div class="nine wide column">
+
+      <h1>Tokens</h1>
+
+      <div class="ui fluid card">
+        <div class="content">
+          <%= form_for @conn,  Routes.advanced_config_user_path(@conn, :generate_token) , [as: :token, class: add_class_error(@data, "ui form", "error")], fn f -> %>
+          <%= hidden_input f, :return_page, value: @conn.request_path %>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= password_input f, :current_password, placeholder: "Current password" %>
+            </div>
+          </div>
+
+          <%= error_tag @data, :current_password, fn error -> %>
+            <div class="ui error message">
+              <p><%= error %></p>
+            </div>
+          <% end %>
+
+          <div class="ui middle aligned divided list">
+            <%= for t <- @data.tokens do %>
+
+              <div class="item">
+                <div class="right floated content">
+                  <a class="ui icon red button">
+                    <i class="trash alternate outline icon"></i>
+                  </a>
+                </div>
+                <div class="content">
+                  <%= t.token %>
+                </div>
+              </div>
+
+            <% end %>
+          </div>
+
+          <button class="ui button" type="submit">
+            Generate new token
+          </button>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

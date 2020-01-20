@@ -15,6 +15,41 @@ defmodule FeeddevWeb.ErrorHelpers do
   end
 
   @doc """
+  Generates tag for inlined form input errors.
+  """
+  def error_tag(form, field, f) do
+    Enum.map(Keyword.get_values(form.errors, field), fn error ->
+      f.(translate_error(error))
+    end)
+  end
+
+  @doc """
+  Is field has error
+  """
+  def has_error(form, field) do
+    Enum.map(Keyword.get_values(form.errors, field), fn _error ->
+      true
+    end)
+  end
+
+  @doc """
+  Is form has error
+  """
+  def has_error(form) do
+    Kernel.length(form.errors) != 0
+  end
+
+  @doc """
+  Check if error in form. If yes, return class and error class.
+  """
+  def add_class_error(form, std_class, err_class) do
+    case has_error(form) do
+      true -> std_class <> " " <> err_class
+      false -> std_class
+    end
+  end
+
+  @doc """
   Translates an error message using gettext.
   """
   def translate_error({msg, opts}) do
