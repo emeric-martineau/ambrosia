@@ -59,9 +59,18 @@ defmodule FeeddevWeb.Users.AdvancedConfigUserController do
     %{:conn => conn, :error => error}
   end
 
+  # Compute number day between today and date
+  defp diff_number_day_since_today(date) do
+    NaiveDateTime.utc_now()
+    |> NaiveDateTime.diff(date)
+    |> Kernel./(3600 * 24)
+    |> Kernel.trunc
+  end
+
   defp render_index_page(_conn_and_error = %{:conn => conn, :error => error}) do
     tokens = UserToken
-                |> Repo.all()
+             |> Repo.all()
+             |> Enum.map(fn ut -> Map.put(ut, :since_days, diff_number_day_since_today(ut.updated_at))  end)
 
     render(conn, "index.html", data: %{:errors => error, :tokens => tokens})
   end

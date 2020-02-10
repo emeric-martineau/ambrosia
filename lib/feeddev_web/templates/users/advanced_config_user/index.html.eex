@@ -22,22 +22,40 @@
             </div>
           <% end %>
 
-          <div class="ui middle aligned divided list">
+          <table class="ui basic table">
+            <thead>
+              <tr>
+                <th>
+                  <span  class="popup-message access-key-age">Access key age</span>
+                </th>
+                <th>Tocken</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
             <%= for t <- @data.tokens do %>
-
-              <div class="item">
-                <div class="right floated content">
+              <tr>
+                <td>
+                <%= if t.since_days < 91 do %>
+                  <div class="ui green horizontal label"><%= t.since_days %> days</div>
+                <% end %>
+                <%= if t.since_days > 90 and t.since_days < 366 do %>
+                  <div class="ui orange horizontal label"><%= t.since_days %> days</div>
+                <% end %>
+                <%= if t.since_days > 365 do %>
+                  <div class="ui red horizontal label"><%= t.since_days %> days</div>
+                <% end %>
+                </td>
+                <td><%= t.token %></td>
+                <td>
                   <a class="ui icon red button">
                     <i class="trash alternate outline icon"></i>
                   </a>
-                </div>
-                <div class="content">
-                  <%= t.token %>
-                </div>
-              </div>
-
+                </td>
+              </tr>
             <% end %>
-          </div>
+            </tbody>
+          </table>
 
           <button class="ui button" type="submit">
             Generate new token
@@ -49,3 +67,17 @@
     </div>
   </div>
 </div>
+
+<div class="ui custom popup top left transition hidden">
+  <strong>Days since the oldest active access key was created:</strong><br>
+  Created less than <span class="ui green label">90 days</span> ago<br>
+  Created <span class="ui orange label">91-365 days</span> ago<br>
+  Created more than <span class="ui red label">365 days</span> ago
+</div>
+<script>
+$('.popup-message.access-key-age')
+  .popup({
+    popup : $('.custom.popup'),
+    on    : 'hover'
+  })
+</script>
