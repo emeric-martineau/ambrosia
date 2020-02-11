@@ -4,7 +4,6 @@ defmodule FeeddevWeb.Users.AdvancedConfigUserController do
   alias Feeddev.Users.UserToken
   alias Feeddev.Repo
   alias Pow.Ecto.Schema.Changeset, as: User
-  alias Plug.Conn
   alias Pow.Plug
 
   def index(conn, _params) do
@@ -22,6 +21,34 @@ defmodule FeeddevWeb.Users.AdvancedConfigUserController do
     |> render_index_page()
   end
 
+  def delete_token(conn, %{"id" => id}) do
+    UserToken
+    |> Repo.get_by(token: id)
+    |> delete_this_token(conn)
+    |> render_index_page
+  end
+
+  # Token not found.
+  defp delete_this_token(nil, conn) do
+    %{:conn => conn, :error => [token: {"token not found", [validation: :required]}]}
+  end
+
+  # Token found, delete it.
+  defp delete_this_token(token, conn) do
+    Repo.delete(token)
+    |> delete_this_token_manage(conn)
+  end
+
+  # Manage return of delete token if error.
+  defp delete_this_token_manage({:error, _}, conn) do
+    %{:conn => conn, :error => [token: {"cannot delete token", [validation: :required]}]}
+  end
+
+  # Manage return of delete token if ok.
+  defp delete_this_token_manage({:ok, _}, conn) do
+    %{:conn => conn, :error => []}
+  end
+
   # If password is empty, return error message
   defp check_password(_user, "", _config) do
     [current_password: {"can't be blank", [validation: :required]}]
@@ -30,8 +57,6 @@ defmodule FeeddevWeb.Users.AdvancedConfigUserController do
   # If error not empty, check it and return true or false
   defp check_password(user, password, config) do
     a = User.verify_password(user, password, config)
-    IO.inspect(a)
-
   end
 
   # User password is ok. Return Conn.t()
@@ -41,6 +66,8 @@ defmodule FeeddevWeb.Users.AdvancedConfigUserController do
       :token => Pow.UUID.generate(),
       :user => user
     }
+
+    # TODO if same UUID, error raise ! Catch it
 
     %UserToken{}
     |> UserToken.changeset(attrs)

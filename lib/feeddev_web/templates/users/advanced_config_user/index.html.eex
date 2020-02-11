@@ -22,6 +22,12 @@
             </div>
           <% end %>
 
+          <%= error_tag @data, :token, fn error -> %>
+            <div class="ui error message">
+              <p><%= error %></p>
+            </div>
+          <% end %>
+
           <table class="ui basic table">
             <thead>
               <tr>
@@ -48,7 +54,7 @@
                 </td>
                 <td><%= t.token %></td>
                 <td>
-                  <a class="ui icon red button">
+                  <a class="ui icon red button" href="<%= Routes.advanced_config_user_path(@conn, :delete_token, t.token) %>">
                     <i class="trash alternate outline icon"></i>
                   </a>
                 </td>

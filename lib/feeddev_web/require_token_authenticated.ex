@@ -71,8 +71,6 @@ defmodule FeeddevWeb.RequireTokenAuthenticated do
   # Search the token and user associate then put user in request.
   @spec authorize(String.t(), String, Conn.t(), Handler.t()) :: Conn.t()
   defp authorize("token", token, conn, handler) do
-    IO.inspect("token")
-
     UserToken
     |> Repo.get_by(token: token)
     |> find_user_by_token(conn)
