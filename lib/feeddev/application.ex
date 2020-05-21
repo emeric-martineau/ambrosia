@@ -6,14 +6,17 @@ defmodule Feeddev.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       Feeddev.Repo,
-      # Start the endpoint when the application starts
+      # Start the Telemetry supervisor
+      FeeddevWeb.Telemetry,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Feeddev.PubSub},
+      # Start the Endpoint (http/https)
       FeeddevWeb.Endpoint
-      # Starts a worker by calling: Feeddev.Worker.start_link(arg)
-      # {Feeddev.Worker, arg},
+      # Start a worker by calling: Feeddev.Worker.start_link(arg)
+      # {Feeddev.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

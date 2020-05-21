@@ -13,9 +13,10 @@ config :feeddev,
 # Configures the endpoint
 config :feeddev, FeeddevWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "Ch/BnafsR2qZ0OO8yUHvSOCJON0IlDTSXuFt5LrtUfjDaH4UyNEgemRCEFuadmso",
-  render_errors: [view: FeeddevWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Feeddev.PubSub, adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "6Qnr8pVoOaCqxaSWRhXTXaazWAUVEpKrw1nNU0t/IH18LNOATphUcmgKapW5U9Sy",
+  render_errors: [view: FeeddevWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Feeddev.PubSub,
+  live_view: [signing_salt: "Hfyd0Ddu"]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -30,10 +31,10 @@ config :phoenix, :json_library, Jason
 import_config "#{Mix.env()}.exs"
 
 config :feeddev, :pow,
-  user: Feeddev.Users.User,
-  repo: Feeddev.Repo,
-  web_module: FeeddevWeb,
-  extensions: [PowResetPassword, PowEmailConfirmation],
-  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
-  mailer_backend: Feeddev.PowMailer,
-  web_mailer_module: Feeddev
+       user: Feeddev.Users.User,
+       repo: Feeddev.Repo,
+       web_module: FeeddevWeb,
+       extensions: [PowResetPassword, PowEmailConfirmation],
+       controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
+       mailer_backend: Feeddev.PowMailer,
+       web_mailer_module: Feeddev

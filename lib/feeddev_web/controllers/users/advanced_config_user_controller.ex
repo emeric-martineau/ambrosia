@@ -56,7 +56,7 @@ defmodule FeeddevWeb.Users.AdvancedConfigUserController do
 
   # If error not empty, check it and return true or false
   defp check_password(user, password, config) do
-    a = User.verify_password(user, password, config)
+    User.verify_password(user, password, config)
   end
 
   # User password is ok. Return Conn.t()
