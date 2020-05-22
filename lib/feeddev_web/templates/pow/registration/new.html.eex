@@ -25,18 +25,38 @@
               <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), placeholder: "E-mail address" %>
             </div>
           </div>
+
+          <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset), fn error -> %>
+            <div class="ui error message">
+              <p><%= error %></p>
+            </div>
+          <% end %>
+
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
               <%= password_input f, :password, placeholder: "Password" %>
             </div>
           </div>
+
+          <%= error_tag f, :password, fn error -> %>
+            <div class="ui error message">
+              <p><%= error %></p>
+            </div>
+          <% end %>
+
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <%= password_input f, :confirm_password, placeholder: "Repeat your password" %>
+              <%= password_input f, :password_confirmation, placeholder: "Repeat your password" %>
             </div>
           </div>
+
+          <%= error_tag f, :password_confirmation, fn error -> %>
+            <div class="ui error message">
+              <p><%= error %></p>
+            </div>
+          <% end %>
 
           <button class="ui primary labeled icon button" type="submit">
             <i class="arrow right icon"></i>

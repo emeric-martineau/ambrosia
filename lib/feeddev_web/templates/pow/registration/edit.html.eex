@@ -51,11 +51,11 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <%= password_input f, :confirm_password, placeholder: "Repeat your password" %>
+              <%= password_input f, :password_confirmation, placeholder: "Repeat your password" %>
             </div>
           </div>
 
-          <%= error_tag f, :confirm_password, fn error -> %>
+          <%= error_tag f, :password_confirmation, fn error -> %>
             <div class="ui error message">
               <p><%= error %></p>
             </div>

@@ -1,18 +1,45 @@
-<h1>Reset password</h1>
+<div class="page-login">
+  <div class="ui centered grid container">
+    <div class="nine wide column">
 
-<%= form_for @changeset, @action, [as: :user], fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <h1>Reset password</h1>
+
+      <%= if get_flash(@conn, :error) do %>
+      <div class="ui icon warning message">
+        <i class="lock icon"></i>
+        <div class="content">
+          <div class="header">
+            Reset password failed!
+          </div>
+          <p><%= get_flash(@conn, :error) %></p>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="ui fluid card">
+        <div class="content">
+          <%= form_for @changeset, @action, [as: :user, class: "ui form"], fn f -> %>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= password_input f, :email, placeholder: "E-mail" %>
+            </div>
+          </div>
+
+          <%= error_tag f, :email, fn error -> %>
+            <div class="ui error message">
+              <p><%= error %></p>
+            </div>
+          <% end %>
+
+          <button class="ui primary labeled icon button" type="submit">
+            <i class="arrow right icon"></i>
+            Reset password
+          </button>
+          <% end %>
+        </div>
+      </div>
+
     </div>
-  <% end %>
-
-  <%= label f, :email %>
-  <%= text_input f, :email %>
-  <%= error_tag f, :email %>
-
-  <div>
-    <%= submit "Submit" %>
   </div>
-<% end %>
-
+</div>
