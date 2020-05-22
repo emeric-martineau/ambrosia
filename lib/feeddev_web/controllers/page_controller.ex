@@ -12,4 +12,8 @@ defmodule FeeddevWeb.PageController do
 
     render(conn, "index.html")
   end
+
+  def thank_you(conn, _params) do
+    render(conn, "register_thank_you.html")
+  end
 end
