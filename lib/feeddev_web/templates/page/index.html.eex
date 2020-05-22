@@ -74,14 +74,9 @@
 
   <div class="ui vertical stripe segment">
     <div class="ui text container">
-      <h3 class="ui header">Breaking The Grid, Grabs Your Attention</h3>
-      <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
-      <a class="ui large button">Read More</a>
-      <h4 class="ui horizontal header divider">
-        <a href="#">Case Studies</a>
-      </h4>
-      <h3 class="ui header">Did We Tell You About Our Bananas?</h3>
-      <p>Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
-      <a class="ui large button">I'm Still Quite Interested</a>
+      <h3 class="ui header">Create account to start demo!</h3>
+      <p>First, click on <%= link "Register", to: Routes.pow_registration_path(@conn, :new) %> and create a test account.</p>
+      <p>In console you see a log to print the email that normally send :</p>
+      <pre class="shell">[debug] E-mail sent: %{html: &#x22;&#x3C;h3&#x3E;Hi,&#x3C;/h3&#x3E;&#x3C;p&#x3E;Please use the following link to confirm your e-mail address:&#x3C;/p&#x3E;&#x3C;p&#x3E;&#x3C;a href=\&#x22;http://localhost:4000/confirm-email/SFMyNTY.ZjBiMzYzYjgtODRkOC00NjlhLTllYjctNDA2ZjdhOTI0ZWJk.eH9IfItVU4JWlnhVdCHNS966l2XIe6ZHFrW4ZSpHWAY\&#x22;&#x3E;http://localhost:4000/confirm-email/SFMyNTY.ZjBiMzYzYjgtODRkOC00NjlhLTllYjctNDA2ZjdhOTI0ZWJk.eH9IfItVU4JWlnhVdCHNS966l2XIe6ZHFrW4ZSpHWAY&#x3C;/a&#x3E;&#x3C;/p&#x3E;&#x22;, subject: &#x22;Confirm your email address&#x22;, text: &#x22;Hi,\n\nPlease use the following link to confirm your e-mail address:\n\nhttp://localhost:4000/confirm-email/SFMyNTY.ZjBiMzYzYjgtODRkOC00NjlhLTllYjctNDA2ZjdhOTI0ZWJk.eH9IfItVU4JWlnhVdCHNS966l2XIe6ZHFrW4ZSpHWAY\n&#x22;, to: &#x22;truc@machin.com&#x22;}</pre>
     </div>
   </div>-->
