@@ -22,7 +22,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <%= password_input f, :email, placeholder: "E-mail" %>
+              <%= text_input f, :email, placeholder: "E-mail" %>
             </div>
           </div>
 
@@ -34,8 +34,13 @@
 
           <button class="ui primary labeled icon button" type="submit">
             <i class="arrow right icon"></i>
-            Reset password
+            Send reset link
           </button>
+
+          <a class="ui basic labeled icon button" href="<%= Routes.pow_session_path(@conn, :new) %>">
+            <i class="unlock alternate icon"></i>
+            Sign in
+          </a>
           <% end %>
         </div>
       </div>

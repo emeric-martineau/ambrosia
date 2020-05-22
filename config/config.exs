@@ -36,5 +36,5 @@ config :feeddev, :pow,
        web_module: FeeddevWeb,
        extensions: [PowResetPassword, PowEmailConfirmation],
        controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
-       mailer_backend: Feeddev.PowMailer,
-       web_mailer_module: Feeddev
+       mailer_backend: FeeddevWeb.Pow.Mailer,
+       web_mailer_module: FeeddevWeb

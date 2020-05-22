@@ -1,6 +1,7 @@
 use Mix.Config
 
 # Configure your database
+# psql -h localhost -U hello -d hello_dev
 config :feeddev, Feeddev.Repo,
   username: "hello",
   password: "password",

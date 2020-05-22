@@ -1,4 +1,4 @@
-defmodule Feeddev.PowMailer do
+defmodule FeeddevWeb.Pow.Mailer do
   use Pow.Phoenix.Mailer
   require Logger
 

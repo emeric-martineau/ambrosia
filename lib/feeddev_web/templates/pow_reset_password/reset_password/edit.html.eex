@@ -47,13 +47,8 @@
 
           <button class="ui primary labeled icon button" type="submit">
             <i class="arrow right icon"></i>
-            Send reset link
+            Reset password
           </button>
-
-          <a class="ui basic labeled icon button" href="<%= Routes.pow_session_path(@conn, :new) %>">
-            <i class="unlock alternate icon"></i>
-            Sign in
-          </a>
           <% end %>
         </div>
       </div>
