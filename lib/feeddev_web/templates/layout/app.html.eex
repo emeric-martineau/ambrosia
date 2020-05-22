@@ -53,6 +53,9 @@
       <a class="item" href="https://www.phoenixframework.org">Phoenix</a>
       <a class="item" href="https://elixir-lang.org">Elixir</a>
       <a class="item" href="https://www.erlang.org">Erlang</a>
+      <%= if Pow.Plug.current_user(@conn) do %>
+      <%= link "Admin", class: "item", to: Routes.admin_path(@conn, :index) %>
+      <% end %>
       <div class="right menu">
         <%= if Pow.Plug.current_user(@conn) do %>
           <div class="item">
@@ -80,6 +83,10 @@
     <a class="item" href="https://elixir-lang.org">Elixir</a>
     <a class="item" href="https://www.erlang.org">Erlang</a>
     <%= if Pow.Plug.current_user(@conn) do %>
+    <a class="item" href="https://www.erlang.org">Admin</a>
+    <%= link "Admin", class: "item", to: Routes.admin_path(@conn, :index) %>
+    <% end %>
+    <%= if Pow.Plug.current_user(@conn) do %>
         <%= link "Edit profile", class: "ui item", to: Routes.pow_registration_path(@conn, :edit) %>
         <%= link "Log out", class: "ui item", to: Routes.page_path(@conn, :logout) %>
     <% else %>
@@ -101,6 +108,9 @@
         <a class="item" href="https://www.phoenixframework.org">Phoenix</a>
         <a class="item" href="https://elixir-lang.org">Elixir</a>
         <a class="item" href="https://www.erlang.org">Erlang</a>
+        <%= if Pow.Plug.current_user(@conn) do %>
+        <%= link "Admin", class: "item", to: Routes.admin_path(@conn, :index) %>
+        <% end %>
         <div class="right item">
           <%= if Pow.Plug.current_user(@conn) do %>
             <%= link "Edit profile", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :edit) %>
@@ -119,7 +129,7 @@
 
   <%= @inner_content %>
 
-  <div class="ui inverted vertical footer segment">
+  <div class="ui inverted vertical footer segment page">
     <div class="ui container">
       <div class="ui stackable inverted divided equal height stackable grid">
         <div class="three wide column">

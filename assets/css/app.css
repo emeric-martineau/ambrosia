@@ -97,5 +97,18 @@
   font-weight: bold;
 }
 
+.shell {
+  background-color: #dddddd;
+  overflow: scroll;
+  padding: 10px 10px 10px 10px;
+}
+
+.online {
+  font-family: monospace,monospace;
+  overflow: hidden;
+  padding: 2px 2px 2px 2px;
+  font-size: 0.8em;
+}
+
 @import "./phoenix.css";
 @import "./popup.css";

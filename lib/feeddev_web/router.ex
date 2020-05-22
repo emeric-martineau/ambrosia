@@ -16,6 +16,10 @@ defmodule FeeddevWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin_layout do
+    plug :put_layout, {FeeddevWeb.LayoutView, :admin}
+  end
+
   # Protect by HTML page with login box
   pipeline :protected do
     plug Pow.Plug.RequireAuthenticated,
@@ -47,6 +51,12 @@ defmodule FeeddevWeb.Router do
     get "/advanced", Users.AdvancedConfigUserController, :index
     post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
     get "/advanced/tokens/delete/:id", Users.AdvancedConfigUserController, :delete_token
+  end
+
+  scope "/admin", FeeddevWeb do
+    pipe_through [:browser, :protected, :admin_layout]
+
+    get "/", AdminController, :index
   end
 
   scope "/api/v1", FeeddevWeb do
