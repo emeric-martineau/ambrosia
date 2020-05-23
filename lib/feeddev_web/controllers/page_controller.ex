@@ -8,9 +8,9 @@ defmodule FeeddevWeb.PageController do
 
   # Because <a href="" data-method="delete"> not always working
   def logout(conn, _) do
-    {:ok, conn} = Plug.clear_authenticated_user(conn)
-
-    render(conn, "index.html")
+    conn
+    |> Plug.delete()
+    |> render("index.html")
   end
 
   def thank_you(conn, _params) do
