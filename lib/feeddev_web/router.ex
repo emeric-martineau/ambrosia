@@ -66,9 +66,6 @@ defmodule FeeddevWeb.Router do
     resources "/survey", SurveyController
   end
 
-  @impl true
-  def after_sign_out_path(conn), do: Routes.some_path(conn, :index)
-
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
