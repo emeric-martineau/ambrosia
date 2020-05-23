@@ -1,4 +1,4 @@
-defmodule Feeddev.Repo.Migrations.CreateSurveys do
+defmodule Ambrosia.Repo.Migrations.CreateSurveys do
   use Ecto.Migration
 
   def change do

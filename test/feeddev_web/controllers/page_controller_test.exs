@@ -1,5 +1,5 @@
-defmodule FeeddevWeb.PageControllerTest do
-  use FeeddevWeb.ConnCase
+defmodule AmbrosiaWeb.PageControllerTest do
+  use AmbrosiaWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

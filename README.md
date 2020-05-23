@@ -55,16 +55,16 @@ Compiling 1 file (.yrl)
 Compiling 1 file (.erl)
 Compiling 20 files (.ex)
 Generated gettext app
-==> feeddev
+==> ambrosia
 Could not find "rebar3", which is needed to build dependency :ranch
 I can install a local copy which is just used by Mix
 Shall I install rebar3? (if running non-interactively, use "mix local.rebar --force") [Yn]
 
 ...
 
-Generated feeddev app
-[info] Running FeeddevWeb.Endpoint with cowboy 2.7.0 at 0.0.0.0:4000 (http)
-[info] Access FeeddevWeb.Endpoint at http://localhost:4000
+Generated ambrosia app
+[info] Running AmbrosiaWeb.Endpoint with cowboy 2.7.0 at 0.0.0.0:4000 (http)
+[info] Access AmbrosiaWeb.Endpoint at http://localhost:4000
 
 webpack is watching the files…
 
@@ -86,18 +86,18 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Add API
 
-First, goto `lib/feeddev/api/` folder and copy `survey.ex` file in same directory, change `Feeddev.Api.Survey` to put
+First, goto `lib/ambrosia/api/` folder and copy `survey.ex` file in same directory, change `Ambrosia.Api.Survey` to put
 your your namespace.
 
 Change tablename and fieldname. See [Ecto.Changeset ](https://hexdocs.pm/ecto/Ecto.Changeset.html) for more information.
 
-Duplicate controller `lib/feeddev_web/controllers/api/v1/survey_controller.ex` in same folder.
+Duplicate controller `lib/ambrosia_web/controllers/api/v1/survey_controller.ex` in same folder.
 
-Duplication view `lib/feeddev_web/views/survey_view.ex` in same folder.
+Duplication view `lib/ambrosia_web/views/survey_view.ex` in same folder.
 
-Add entry in router `lib/feeddev_web/router.ex` in section below:
+Add entry in router `lib/ambrosia_web/router.ex` in section below:
 ```
-scope "/api/v1", FeeddevWeb do
+scope "/api/v1", AmbrosiaWeb do
   pipe_through [:api, :api_protected]
 
   resources "/survey", SurveyController
@@ -132,9 +132,9 @@ By default, no email send. All email are display in log console.
 If you want send email, please add dependency like [Bamboo](https://github.com/thoughtbot/bamboo) then edit
 `lib/pow/mailer.ex` file and put something like:
 ```
-defmodule FeeddevWeb.Mailer do
+defmodule AmbrosiaWeb.Mailer do
   use Pow.Phoenix.Mailer
-  use Bamboo.Mailer, otp_app: :feeddev
+  use Bamboo.Mailer, otp_app: :ambrosia
   require Logger
 
   import Bamboo.Email
@@ -156,10 +156,10 @@ end
 
 ## Enable/Disable token auth
 
-By default, API can be call with token. If you want disable token edit `lib/feeddev_web/router.ex` file and remove
+By default, API can be call with token. If you want disable token edit `lib/ambrosia_web/router.ex` file and remove
 pipeline `:api_protected` on api path:
 ```
-scope "/api/v1", FeeddevWeb do
+scope "/api/v1", AmbrosiaWeb do
   pipe_through [:api, :api_protected]
 
   resources "/survey", SurveyController
@@ -172,7 +172,7 @@ post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
 get "/advanced/tokens/delete/:id", Users.AdvancedConfigUserController, :delete_token
 ```
 
-Edit `lib/feeddev_web/templates/pow/registration/edit.html.eex` file and remove:
+Edit `lib/ambrosia_web/templates/pow/registration/edit.html.eex` file and remove:
 ```
 <%= link "Advanced settings", class: "ui button", to: Routes.advanced_config_user_path(@conn, :index) %>
 ```
@@ -191,6 +191,10 @@ rm -rf _build
 
 find -type f -print0 | xargs -0 sed -i 's/Ambrosia/'${MY_PROJECT_NAME}'/g'
 find -type f -print0 | xargs -0 sed -i 's/ambrosia/'${MY_PROJECT_NAME_LOWERCASE}'/g'
+mv lib/ambrosia lib/${MY_PROJECT_NAME_LOWERCASE}
+mv lib/ambrosia_web lib/${MY_PROJECT_NAME_LOWERCASE}_dev
+mv lib/ambrosia.ex lib/${MY_PROJECT_NAME_LOWERCASE}.ex
+mv lib/ambrosia_web.ex lib/${MY_PROJECT_NAME_LOWERCASE}_dev.ex
 ```
 
 ## Ready for production?

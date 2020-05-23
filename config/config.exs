@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :feeddev,
-  ecto_repos: [Feeddev.Repo]
+config :ambrosia,
+  ecto_repos: [Ambrosia.Repo]
 
 # Configures the endpoint
-config :feeddev, FeeddevWeb.Endpoint,
+config :ambrosia, AmbrosiaWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "6Qnr8pVoOaCqxaSWRhXTXaazWAUVEpKrw1nNU0t/IH18LNOATphUcmgKapW5U9Sy",
-  render_errors: [view: FeeddevWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Feeddev.PubSub,
+  render_errors: [view: AmbrosiaWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Ambrosia.PubSub,
   live_view: [signing_salt: "Hfyd0Ddu"]
 
 # Configures Elixir's Logger
@@ -30,11 +30,11 @@ config :phoenix, :json_library, Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
 
-config :feeddev, :pow,
-       user: Feeddev.Users.User,
-       repo: Feeddev.Repo,
-       web_module: FeeddevWeb,
+config :ambrosia, :pow,
+       user: Ambrosia.Users.User,
+       repo: Ambrosia.Repo,
+       web_module: AmbrosiaWeb,
        extensions: [PowResetPassword, PowEmailConfirmation],
        controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
-       mailer_backend: FeeddevWeb.Pow.Mailer,
-       web_mailer_module: FeeddevWeb
+       mailer_backend: AmbrosiaWeb.Pow.Mailer,
+       web_mailer_module: AmbrosiaWeb

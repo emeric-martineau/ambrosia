@@ -1,4 +1,4 @@
-defmodule FeeddevWeb.Pow.Mailer do
+defmodule AmbrosiaWeb.Pow.Mailer do
   use Pow.Phoenix.Mailer
   require Logger
 

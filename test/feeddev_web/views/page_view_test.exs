@@ -1,3 +1,3 @@
-defmodule FeeddevWeb.PageViewTest do
-  use FeeddevWeb.ConnCase, async: true
+defmodule AmbrosiaWeb.PageViewTest do
+  use AmbrosiaWeb.ConnCase, async: true
 end

@@ -1,4 +1,4 @@
-defmodule FeeddevWeb.ChannelCase do
+defmodule AmbrosiaWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule FeeddevWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use FeeddevWeb.ChannelCase, async: true`, although
+  by setting `use AmbrosiaWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -21,18 +21,18 @@ defmodule FeeddevWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       import Phoenix.ChannelTest
-      import FeeddevWeb.ChannelCase
+      import AmbrosiaWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint FeeddevWeb.Endpoint
+      @endpoint AmbrosiaWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Feeddev.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Ambrosia.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Feeddev.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Ambrosia.Repo, {:shared, self()})
     end
 
     :ok

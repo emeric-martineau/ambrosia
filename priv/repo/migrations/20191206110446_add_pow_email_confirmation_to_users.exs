@@ -1,4 +1,4 @@
-defmodule Feeddev.Repo.Migrations.AddPowEmailConfirmationToUsers do
+defmodule Ambrosia.Repo.Migrations.AddPowEmailConfirmationToUsers do
   use Ecto.Migration
 
   def change do

@@ -1,9 +1,9 @@
-defmodule Feeddev.MixProject do
+defmodule Ambrosia.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :feeddev,
+      app: :ambrosia,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Feeddev.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Feeddev.Application, []},
+      mod: {Ambrosia.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

@@ -1,4 +1,4 @@
-defmodule Feeddev.Repo.Migrations.CreateUsersToken do
+defmodule Ambrosia.Repo.Migrations.CreateUsersToken do
   use Ecto.Migration
 
   def change do

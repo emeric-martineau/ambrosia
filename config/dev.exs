@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 # psql -h localhost -U hello -d hello_dev
-config :feeddev, Feeddev.Repo,
+config :ambrosia, Ambrosia.Repo,
   username: "hello",
   password: "password",
   database: "hello_dev",
@@ -16,7 +16,7 @@ config :feeddev, Feeddev.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :feeddev, FeeddevWeb.Endpoint,
+config :ambrosia, AmbrosiaWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -56,13 +56,13 @@ config :feeddev, FeeddevWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :feeddev, FeeddevWeb.Endpoint,
+config :ambrosia, AmbrosiaWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/feeddev_web/(live|views)/.*(ex)$",
-      ~r"lib/feeddev_web/templates/.*(eex)$"
+      ~r"lib/ambrosia_web/(live|views)/.*(ex)$",
+      ~r"lib/ambrosia_web/templates/.*(eex)$"
     ]
   ]
 
