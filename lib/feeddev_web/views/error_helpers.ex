@@ -15,15 +15,6 @@ defmodule FeeddevWeb.ErrorHelpers do
   end
 
   @doc """
-  Is field has error
-  """
-  def has_error(form, field) do
-    Enum.map(Keyword.get_values(form.errors, field), fn _error ->
-      true
-    end)
-  end
-
-  @doc """
   Is form has error
   """
   def has_error(form) do
