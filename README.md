@@ -16,6 +16,7 @@ Before start, you need install:
  * Erlang 20 or later
  * Elixir 1.7 or later (see [Install](https://elixir-lang.org/install.html))
  * PostgreSQL 10 or later
+ * NodeJS 8 or later
 
 Then clone this project.
 
@@ -30,8 +31,9 @@ Unchanged:
   cowlib 2.8.0
 ...
 ```
+then run `npm install --prefix "assets"` and finally goto `assets/semantic` and run `gulp build`.
 
-Now edit `config/dev.exs` file and set database name and credential of database:
+Now return to root project path, edit `config/dev.exs` file and set database name and credential of database:
 ```
   username: "hello",
   password: "password",
@@ -174,9 +176,9 @@ rm -rf _build
 find -type f -print0 | xargs -0 sed -i 's/Ambrosia/'${MY_PROJECT_NAME}'/g'
 find -type f -print0 | xargs -0 sed -i 's/ambrosia/'${MY_PROJECT_NAME_LOWERCASE}'/g'
 mv lib/ambrosia lib/${MY_PROJECT_NAME_LOWERCASE}
-mv lib/ambrosia_web lib/${MY_PROJECT_NAME_LOWERCASE}_dev
+mv lib/ambrosia_web lib/${MY_PROJECT_NAME_LOWERCASE}_web
 mv lib/ambrosia.ex lib/${MY_PROJECT_NAME_LOWERCASE}.ex
-mv lib/ambrosia_web.ex lib/${MY_PROJECT_NAME_LOWERCASE}_dev.ex
+mv lib/ambrosia_web.ex lib/${MY_PROJECT_NAME_LOWERCASE}_web.ex
 ```
 
 ## Ready for production?
