@@ -41,7 +41,8 @@ Now edit `config/dev.exs` file and set database name and credential of database:
 
 ## Run
 
-Now in the same folder setup the project with `mix setup` and run `mix phx.server` and say yes when prompted:
+Now in the same folder, setup the project with running `mix setup` and running `mix phx.server` and say yes when
+prompted:
 ```
 $ mix phx.server
 ==> file_system
@@ -87,7 +88,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 ## Add API
 
 First, goto `lib/ambrosia/api/` folder and copy `survey.ex` file in same directory, change `Ambrosia.Api.Survey` to put
-your your namespace.
+your namespace.
 
 Change tablename and fieldname. See [Ecto.Changeset ](https://hexdocs.pm/ecto/Ecto.Changeset.html) for more information.
 
@@ -189,3 +190,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+  
+## License
+
+This project is [MIT](./LICENSE.md) licensed.
