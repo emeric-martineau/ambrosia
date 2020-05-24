@@ -156,26 +156,7 @@ end
 
 ## Enable/Disable token auth
 
-By default, API can be call with token. If you want disable token edit `lib/ambrosia_web/router.ex` file and remove
-pipeline `:api_protected` on api path:
-```
-scope "/api/v1", AmbrosiaWeb do
-  pipe_through [:api, :api_protected]
-
-  resources "/survey", SurveyController
-end
-```
-Remove or comment in same file:
-```
-get "/advanced", Users.AdvancedConfigUserController, :index
-post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
-get "/advanced/tokens/delete/:id", Users.AdvancedConfigUserController, :delete_token
-```
-
-Edit `lib/ambrosia_web/templates/pow/registration/edit.html.eex` file and remove:
-```
-<%= link "Advanced settings", class: "ui button", to: Routes.advanced_config_user_path(@conn, :index) %>
-```
+TODO
 
 ## Create your project
 
