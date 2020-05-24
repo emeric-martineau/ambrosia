@@ -37,4 +37,5 @@ config :ambrosia, :pow,
        extensions: [PowResetPassword, PowEmailConfirmation],
        controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
        mailer_backend: AmbrosiaWeb.Pow.Mailer,
-       web_mailer_module: AmbrosiaWeb
+       web_mailer_module: AmbrosiaWeb,
+       routes_backend: AmbrosiaWeb.Pow.Routes
