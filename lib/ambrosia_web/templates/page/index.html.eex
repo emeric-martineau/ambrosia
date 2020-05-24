@@ -1,7 +1,7 @@
   <div class="ui inverted vertical center aligned masthead segment">
      <div class="ui text container">
         <h1 class="ui inverted header">
-          <%= gettext "Welcome to %{name}!", name: "Ambrosia" %>
+          <%= gettext("Welcome to %{name}!", name: "&#65;mbrosia") |> raw() %>
         </h1>
         <h2>A productive starter kit that<br/>does not compromise speed or maintainability.</h2>
         <a class="ui huge primary button" href="https://hexdocs.pm/phoenix/overview.html">Get Started <i class="right arrow icon"></i></a>
