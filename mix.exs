@@ -45,7 +45,8 @@ defmodule Ambrosia.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:pow, "~> 1.0.15"},
+      {:pow, "~> 1.0.20"},
+      {:floki, "~> 0.26.0", only: :test}
     ]
   end
 

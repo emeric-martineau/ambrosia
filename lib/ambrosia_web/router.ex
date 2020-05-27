@@ -47,7 +47,6 @@ defmodule AmbrosiaWeb.Router do
   scope "/profile", AmbrosiaWeb do
     pipe_through [:browser, :protected]
 
-    get "/", PageController, :index
     get "/logout", PageController, :logout
     get "/advanced", Users.AdvancedConfigUserController, :index
     post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
@@ -63,7 +62,7 @@ defmodule AmbrosiaWeb.Router do
   scope "/api/v1", AmbrosiaWeb do
     pipe_through [:api, :api_protected]
 
-    resources "/survey", SurveyController
+    resources "/survey", SurveyController, only: [:index, :show, :update, :delete, :create]
   end
 
   # Enables LiveDashboard only for development
