@@ -6,7 +6,7 @@ defmodule AmbrosiaWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_hello_key",
+    key: "_ambrosia_key",
     signing_salt: "WCC6/gDW"
   ]
 

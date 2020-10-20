@@ -7,7 +7,7 @@ defmodule AmbrosiaWeb.SurveyController do
   action_fallback AmbrosiaWeb.FallbackController
 
   def index(conn, _params) do
-    IO.inspect conn.assigns.current_user
+    #IO.inspect conn.assigns.current_user
     surveys = Api.list_surveys()
     render(conn, "index.json", surveys: surveys)
   end
