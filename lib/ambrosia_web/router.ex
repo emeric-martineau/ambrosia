@@ -30,6 +30,18 @@ defmodule AmbrosiaWeb.Router do
     plug AmbrosiaWeb.RequireTokenAuthenticated, error_handler: AmbrosiaWeb.ApiAuthErrorHandler
   end
 
+  scope "/", Pow.Phoenix, as: "pow" do
+    pipe_through :browser
+
+    get "/profile/edit", RegistrationController, :edit
+    patch "/profile/edit", RegistrationController, :update
+    put "/profile/edit", RegistrationController, :update
+
+    get "/profile/login", SessionController, :new
+    post "/profile/login", SessionController, :create
+    delete "/profile/logout", SessionController, :delete
+  end
+
   scope "/" do
     pipe_through :browser
 
@@ -41,7 +53,6 @@ defmodule AmbrosiaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/registration/thank-you", PageController, :thank_you
   end
 
   scope "/profile", AmbrosiaWeb do
