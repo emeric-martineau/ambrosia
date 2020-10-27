@@ -53,6 +53,8 @@ defmodule AmbrosiaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/registration/thank-you", PageController, :thank_you
   end
 
   scope "/profile", AmbrosiaWeb do
