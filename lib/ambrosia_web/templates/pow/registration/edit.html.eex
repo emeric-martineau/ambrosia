@@ -2,7 +2,7 @@
   <div class="ui centered grid container">
     <div class="nine wide column">
 
-      <h1>Edit profile</h1>
+      <h1><%= dgettext("profile", "Edit profile") %></h1>
 
       <div class="ui fluid card">
         <div class="content">
@@ -10,7 +10,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <%= password_input f, :current_password, placeholder: "Current password" %>
+              <%= password_input f, :current_password, placeholder: dgettext("profile", "Current password") %>
             </div>
           </div>
 
@@ -25,7 +25,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), placeholder: "E-mail address" %>
+              <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), placeholder: dgettext("profile", "E-mail address") %>
             </div>
           </div>
 
@@ -38,7 +38,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <%= password_input f, :password, placeholder: "Password" %>
+              <%= password_input f, :password, placeholder: dgettext("profile", "Password") %>
             </div>
           </div>
 
@@ -51,7 +51,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <%= password_input f, :password_confirmation, placeholder: "Repeat your password" %>
+              <%= password_input f, :password_confirmation, placeholder: dgettext("profile", "Repeat your password") %>
             </div>
           </div>
 
@@ -63,14 +63,14 @@
 
           <button class="ui primary labeled icon button" type="submit">
             <i class="save icon"></i>
-            Update
+            <%= dgettext("profile", "Update") %>
           </button>
 
           <% end %>
         </div>
       </div>
 
-      <%= link "Advanced settings", class: "ui button", to: Routes.advanced_config_user_path(@conn, :index) %>
+      <%= link dgettext("profile", "Advanced settings"), class: "ui button", to: Routes.advanced_config_user_path(@conn, :index) %>
 
     </div>
   </div>

@@ -1,0 +1,161 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here as no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:46
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:49 lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:52
+msgid "%{nb_days} days"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:35
+msgid "Access key age"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:73
+msgid "Advanced settings"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/page/register_thank_you.html.eex:7
+msgid "Come back home"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:5
+msgid "Connect"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:83
+msgid "Created [span]%{nb_days}[/span] days ago"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:79
+msgid "Created less than [span]%{nb_days}[/span] days ago"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:87
+msgid "Created more than [span]%{nb_days}[/span] days ago"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:13
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:15
+msgid "Current password"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:78
+msgid "Days since the oldest active access key was created:"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:38
+msgid "Delete"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:43
+msgid "Don't have an account?"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:28
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:25 lib/ambrosia_web/templates/pow/session/new.html.eex:25
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:25
+msgid "E-mail address"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:5
+msgid "Edit profile"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:41
+msgid "Forgot your password?"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:67
+msgid "Generate new token"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:41
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:38 lib/ambrosia_web/templates/pow/session/new.html.eex:31
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:25
+msgid "Password"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:5
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:63
+msgid "Register"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:43
+msgid "Register now!"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:54
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:51 lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:38
+msgid "Repeat your password"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:5
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:50 lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:5
+msgid "Reset password"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:37
+msgid "Send reset link"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:68
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:37 lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:42
+msgid "Sign in"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/page/register_thank_you.html.eex:3
+msgid "Thank you for yout registration!"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:37
+msgid "Token"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:5
+msgid "Tokens"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:66
+msgid "Update"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/page/register_thank_you.html.eex:5
+msgid "You will receive an email to confirm your subscription."
+msgstr ""

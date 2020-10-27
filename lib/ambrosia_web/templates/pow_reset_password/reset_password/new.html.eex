@@ -2,14 +2,14 @@
   <div class="ui centered grid container">
     <div class="nine wide column">
 
-      <h1>Reset password</h1>
+      <h1><%= dgettext("profile", "Reset password") %></h1>
 
       <%= if get_flash(@conn, :error) do %>
       <div class="ui icon warning message">
         <i class="lock icon"></i>
         <div class="content">
           <div class="header">
-            Reset password failed!
+            <%= dgettext("errors", "Reset password failed!") %>
           </div>
           <p><%= get_flash(@conn, :error) %></p>
         </div>
@@ -22,7 +22,7 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <%= text_input f, :email, placeholder: "E-mail" %>
+              <%= text_input f, :email, placeholder: dgettext("profile", "E-mail address") %>
             </div>
           </div>
 
@@ -34,12 +34,12 @@
 
           <button class="ui primary labeled icon button" type="submit">
             <i class="arrow right icon"></i>
-            Send reset link
+            <%= dgettext("profile", "Send reset link") %>
           </button>
 
           <a class="ui basic labeled icon button" href="<%= Routes.pow_session_path(@conn, :new) %>">
             <i class="unlock alternate icon"></i>
-            Sign in
+            <%= dgettext("profile", "Sign in") %>
           </a>
           <% end %>
         </div>

@@ -7,7 +7,6 @@
 ## Run `mix gettext.extract` to bring this file up to
 ## date. Leave `msgstr`s empty as changing them here has no
 ## effect: edit them in PO (`.po`) files instead.
-
 ## From Ecto.Changeset.cast/4
 msgid "can't be blank"
 msgstr ""
@@ -92,4 +91,20 @@ msgid "must be greater than or equal to %{number}"
 msgstr ""
 
 msgid "must be equal to %{number}"
+msgstr ""
+
+# From login form
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:12
+msgid "Login failed!"
+msgstr ""
+
+# From registration form
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:12
+msgid "Registration failed!"
+msgstr ""
+
+# From reset password form
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:12
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:12
+msgid "Reset password failed!"
 msgstr ""
