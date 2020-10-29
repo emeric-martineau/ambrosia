@@ -8,7 +8,7 @@ You have 5 predefined pipelines.
 
 ### :browser
 
-The `:brower` pipeline allow browser to get this route.
+The `:browser` pipeline allow browser to get this route.
 
 Contente type returned is HTML, it's protected against some classic attack.
 
