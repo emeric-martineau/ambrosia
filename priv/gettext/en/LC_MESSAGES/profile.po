@@ -103,8 +103,9 @@ msgid "Password"
 msgstr ""
 
 #, elixir-format
-#: lib/ambrosia_web/templates/pow/registration/new.html.eex:5
-#: lib/ambrosia_web/templates/pow/registration/new.html.eex:63
+#: lib/ambrosia_web/templates/layout/app.html.eex:69
+#: lib/ambrosia_web/templates/layout/app.html.eex:93 lib/ambrosia_web/templates/layout/app.html.eex:120
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:5 lib/ambrosia_web/templates/pow/registration/new.html.eex:63
 msgid "Register"
 msgstr ""
 
@@ -131,8 +132,10 @@ msgid "Send reset link"
 msgstr ""
 
 #, elixir-format
-#: lib/ambrosia_web/templates/pow/registration/new.html.eex:68
-#: lib/ambrosia_web/templates/pow/session/new.html.eex:37 lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:42
+#: lib/ambrosia_web/templates/layout/app.html.eex:72
+#: lib/ambrosia_web/templates/layout/app.html.eex:94 lib/ambrosia_web/templates/layout/app.html.eex:122
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:68 lib/ambrosia_web/templates/pow/session/new.html.eex:37
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:42
 msgid "Sign in"
 msgstr ""
 

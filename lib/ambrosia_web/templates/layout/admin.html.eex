@@ -50,12 +50,12 @@
 <div class="ui large top fixed hidden menu">
   <div class="ui container">
       <div class="right menu">
-          <%= link "Home", class: "item", to: "/" %>
+          <%= link dgettext("menu", "Home"), class: "item", to: "/" %>
           <div class="item">
-            <%= link "Edit profile", class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
+            <%= link dgettext("menu", "Edit profile"), class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
           </div>
           <div class="item">
-            <%= link "Log out", class: "ui button", to: Routes.page_path(@conn, :logout) %>
+            <%= link dgettext("menu", "Log out"), class: "ui button", to: Routes.page_path(@conn, :logout) %>
           </div>
     </div>
   </div>
@@ -63,9 +63,9 @@
 
 <!-- Sidebar Menu -->
 <div class="ui vertical sidebar menu">
-  <%= link "Home", class: "item", to: "/" %>
-  <%= link "Edit profile", class: "ui item", to: Routes.pow_registration_path(@conn, :edit) %>
-  <%= link "Log out", class: "ui item", to: Routes.page_path(@conn, :logout) %>
+  <%= link dgettext("menu", "Home"), class: "item", to: "/" %>
+  <%= link dgettext("menu", "Edit profile"), class: "ui item", to: Routes.pow_registration_path(@conn, :edit) %>
+  <%= link dgettext("menu", "Log out"), class: "ui item", to: Routes.page_path(@conn, :logout) %>
 </div>
 
 <!-- Page Contents -->
@@ -74,14 +74,14 @@
 
     <div class="ui container">
       <div class="ui large secondary pointing menu">
-        <%= link "Home", class: "item", to: "/" %>
+        <%= link dgettext("menu", "Home"), class: "item", to: "/" %>
         <a class="toc item">
           <i class="sidebar icon"></i>
         </a>
         <div class="right item">
-            <%= link "Edit profile", class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
+            <%= link dgettext("menu", "Edit profile"), class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
             <span class="button-space-menu"></span>
-            <%= link "Log out", class: "ui button", to: Routes.page_path(@conn, :logout) %>
+            <%= link dgettext("menu", "Log out"), class: "ui button", to: Routes.page_path(@conn, :logout) %>
         </div>
       </div>
     </div>
