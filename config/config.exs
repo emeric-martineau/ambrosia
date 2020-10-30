@@ -39,3 +39,6 @@ config :ambrosia, :pow,
        mailer_backend: AmbrosiaWeb.Pow.Mailer,
        web_mailer_module: AmbrosiaWeb,
        routes_backend: AmbrosiaWeb.Pow.Routes
+
+# Internationalization
+config :ambrosia, AmbrosiaWeb.Gettext, default_locale: "en", locales: ~w(en fr)

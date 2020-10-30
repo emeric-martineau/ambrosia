@@ -1,5 +1,6 @@
 defmodule AmbrosiaWeb.Router do
   use AmbrosiaWeb, :router
+  use AmbrosiaWeb.Routes
   use Pow.Phoenix.Router
   use Pow.Extension.Phoenix.Router,
       extensions: [PowResetPassword, PowEmailConfirmation]
@@ -10,6 +11,10 @@ defmodule AmbrosiaWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+  end
+
+  pipeline :internationalization do
+    plug SetLocale, gettext: AmbrosiaWeb.Gettext, default_locale: "en"
   end
 
   pipeline :api do
@@ -30,46 +35,20 @@ defmodule AmbrosiaWeb.Router do
     plug AmbrosiaWeb.RequireTokenAuthenticated, error_handler: AmbrosiaWeb.ApiAuthErrorHandler
   end
 
-  scope "/", Pow.Phoenix, as: "pow" do
-    pipe_through :browser
-
-    get "/profile/edit", RegistrationController, :edit
-    patch "/profile/edit", RegistrationController, :update
-    put "/profile/edit", RegistrationController, :update
-
-    get "/profile/login", SessionController, :new
-    post "/profile/login", SessionController, :create
-    delete "/profile/logout", SessionController, :delete
-  end
-
-  scope "/" do
-    pipe_through :browser
-
-    pow_routes()
-    pow_extension_routes()
-  end
+  AmbrosiaWeb.Routes.ambrosia_routes("/")
+  AmbrosiaWeb.Routes.ambrosia_routes("/:locale")
 
   scope "/", AmbrosiaWeb do
-    pipe_through :browser
+    pipe_through [:browser, :internationalization]
+    
+    # you need this entry to support the default root without a locale, it will never be called
+    get "/", PageController, :dummy
+  end
+
+  scope "/:locale", AmbrosiaWeb do
+    pipe_through [:browser, :internationalization]
 
     get "/", PageController, :index
-
-    get "/registration/thank-you", PageController, :thank_you
-  end
-
-  scope "/profile", AmbrosiaWeb do
-    pipe_through [:browser, :protected]
-
-    get "/logout", PageController, :logout
-    get "/advanced", Users.AdvancedConfigUserController, :index
-    post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
-    get "/advanced/tokens/delete/:id", Users.AdvancedConfigUserController, :delete_token
-  end
-
-  scope "/admin", AmbrosiaWeb do
-    pipe_through [:browser, :protected, :admin_layout]
-
-    get "/", AdminController, :index
   end
 
   scope "/api/v1", AmbrosiaWeb do
@@ -89,6 +68,11 @@ defmodule AmbrosiaWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
+      pipe_through :browser
+      live_dashboard "/dashboard", metrics: AmbrosiaWeb.Telemetry
+    end
+
+    scope "/:locale" do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: AmbrosiaWeb.Telemetry
     end
