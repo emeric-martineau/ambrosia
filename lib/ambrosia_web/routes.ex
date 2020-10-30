@@ -3,16 +3,15 @@ defmodule AmbrosiaWeb.Routes do
   defmacro ambrosia_routes(prefix_path) do
     quote do
       scope unquote(prefix_path) do
-        pipe_through [:browser, :internationalization]
-
         scope "/profile", Pow.Phoenix, as: "pow" do
-          get "/edit", RegistrationController, :edit
+          pipe_through [:browser, :internationalization]
 
+          get "/edit", RegistrationController, :edit
           get "/login", SessionController, :new
         end
 
         scope "/profile", AmbrosiaWeb do
-          pipe_through :protected
+          pipe_through [:browser, :internationalization, :protected]
 
           get "/logout", PageController, :logout
           get "/advanced", Users.AdvancedConfigUserController, :index
@@ -21,24 +20,32 @@ defmodule AmbrosiaWeb.Routes do
       end
 
       scope unquote(prefix_path) <> "/admin", AmbrosiaWeb do
-        pipe_through [:protected, :admin_layout]
+        pipe_through [:browser, :internationalization, :protected, :admin_layout]
 
         get "/", AdminController, :index
       end
 
       scope unquote(prefix_path) <> "/confirm-email", PowEmailConfirmation.Phoenix, as: "pow" do
+        pipe_through [:browser, :internationalization]
+
         get "/:id", ConfirmationController, :show
       end
 
-      scope unquote(prefix_path) <> "/reset-password", PowResetPassword.Phoenix, as: "pow" do
-        get "/new", ResetPasswordController, :new
+      scope unquote(prefix_path) <> "/reset-password/new", PowResetPassword.Phoenix, as: "pow" do
+        pipe_through [:browser, :internationalization]
+
+        get "/", ResetPasswordController, :new
       end
 
       scope unquote(prefix_path) <> "/registration", Pow.Phoenix, as: "pow" do
+        pipe_through [:browser, :internationalization]
+
         get "/new", RegistrationController, :new
       end
 
       scope unquote(prefix_path) <> "/reset-password", PowResetPassword.Phoenix, as: "pow_reset_password" do
+        pipe_through [:browser, :internationalization]
+
         get "/:id", ResetPasswordController, :edit
         get "/", ResetPasswordController, :new
       end

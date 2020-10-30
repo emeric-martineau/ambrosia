@@ -54,7 +54,7 @@ defmodule AmbrosiaWeb.Router do
     delete "/", RegistrationController, :delete
   end
 
-  scope "/reset-password", PowResetPassword.Phoenix, as: "pow" do
+  scope "/reset-password", PowResetPassword.Phoenix, as: "pow_reset_password" do
     pipe_through :browser
 
     post "/", ResetPasswordController, :create
