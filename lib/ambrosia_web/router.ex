@@ -35,6 +35,40 @@ defmodule AmbrosiaWeb.Router do
     plug AmbrosiaWeb.RequireTokenAuthenticated, error_handler: AmbrosiaWeb.ApiAuthErrorHandler
   end
 
+  scope "/profile", Pow.Phoenix, as: "pow" do
+    pipe_through :browser
+
+    patch "/edit", RegistrationController, :update
+    put "/edit", RegistrationController, :update
+
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :delete
+  end
+
+  scope "/registration", Pow.Phoenix, as: "pow" do
+    pipe_through :browser
+
+    post "/", RegistrationController, :create
+    patch "/", RegistrationController, :update
+    put "/", RegistrationController, :update
+    delete "/", RegistrationController, :delete
+  end
+
+  scope "/reset-password", PowResetPassword.Phoenix, as: "pow" do
+    pipe_through :browser
+
+    post "/", ResetPasswordController, :create
+    patch "/:id", ResetPasswordController, :update
+    put "/:id", ResetPasswordController, :update
+  end
+
+  scope "/profile", AmbrosiaWeb do
+    pipe_through :protected
+
+    post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
+  end
+
+
   AmbrosiaWeb.Routes.ambrosia_routes("/")
   AmbrosiaWeb.Routes.ambrosia_routes("/:locale")
 
