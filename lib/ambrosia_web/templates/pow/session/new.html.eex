@@ -18,7 +18,7 @@
 
       <div class="ui fluid card">
         <div class="content">
-          <%= form_for @changeset, @action, [as: :user, class: "ui form"], fn f -> %>
+          <%= form_for @changeset, @action, [as: :user, class: add_class_error(@changeset, "ui form", "error")], fn f -> %>
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
