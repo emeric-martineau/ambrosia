@@ -68,7 +68,6 @@ defmodule AmbrosiaWeb.Router do
     post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
   end
 
-
   AmbrosiaWeb.Routes.ambrosia_routes("/")
   AmbrosiaWeb.Routes.ambrosia_routes("/:locale")
 

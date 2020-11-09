@@ -49,6 +49,12 @@ defmodule AmbrosiaWeb.Routes do
         get "/:id", ResetPasswordController, :edit
         get "/", ResetPasswordController, :new
       end
+
+      scope unquote(prefix_path) <> "/registration", AmbrosiaWeb do
+        pipe_through [:browser, :internationalization]
+
+        get "/thank-you", PageController, :thank_you
+      end
     end
   end
 

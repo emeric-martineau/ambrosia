@@ -29,7 +29,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserControllerTest do
       })
 
     # Get list page where token store
-    conn_get_list = get(authed_conn, Routes.advanced_config_user_path(authed_conn, :index))
+    conn_get_list = get(authed_conn, Routes.advanced_config_user_path(authed_conn, :index, "en"))
 
     {:ok, document} = html_response(conn_get_list, 200)
     |> Floki.parse_document()
@@ -45,7 +45,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserControllerTest do
 
     # Now delete token
     [id_token] = children_nodes
-    conn_delete = get(authed_conn, Routes.advanced_config_user_path(authed_conn, :delete_token, Phoenix.Param.to_param(id_token)))
+    conn_delete = get(authed_conn, Routes.advanced_config_user_path(authed_conn, :delete_token, "en", Phoenix.Param.to_param(id_token)))
 
     {:ok, document} = html_response(conn_delete, 200)
                       |> Floki.parse_document()
@@ -57,7 +57,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserControllerTest do
   end
 
   test "Unauthorized profile page access", %{conn: conn} do
-    conn = get(conn, Routes.advanced_config_user_path(conn, :index))
+    conn = get(conn, Routes.advanced_config_user_path(conn, :index, "en"))
     assert redirected_to(conn) =~  Routes.pow_session_path(conn, :new)
   end
 end
