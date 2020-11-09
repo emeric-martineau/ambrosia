@@ -83,7 +83,7 @@ msgstr "Adresse courriel"
 #, elixir-format
 #: lib/ambrosia_web/templates/pow/registration/edit.html.eex:5
 msgid "Edit profile"
-msgstr "Mise à jour du rofil"
+msgstr "Mise à jour du profil"
 
 #, elixir-format
 #: lib/ambrosia_web/templates/pow/session/new.html.eex:41
