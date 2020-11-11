@@ -119,7 +119,7 @@ new CopyWebpackPlugin([{ from: 'semantic/dist/themes/default', to: '../css/theme
 new CopyWebpackPlugin([{ from: 'semantic/dist/semantic.min.js', to: '../js/' }])
 ```
 
-### Update 
+### Update
 
 To update Semantic UI, please edit `assets/package.json` and update `"semantic-ui": "^2.4.2"` line.
 
@@ -149,11 +149,11 @@ defmodule AmbrosiaWeb.Mailer do
     |> subject(subject)
     |> html_body(html)
     |> text_body(text)
-  end 
+  end
 
   def process(email) do
     deliver_now(email)
-  end 
+  end
 end
 ```
 
@@ -187,12 +187,13 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ### Learn more
 
+  * [Ambrosia documentation](./DOCUMENTATION.md)
   * Official website: https://www.phoenixframework.org/
   * Guides: https://hexdocs.pm/phoenix/overview.html
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
-  
+
 ## License
 
 This project is [MIT](./LICENSE.md) licensed.
