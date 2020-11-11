@@ -18,7 +18,7 @@ Before start, you need install:
  * PostgreSQL 10 or later
  * NodeJS 8 or later
 
-Then clone this project.
+Then clone this project. Use tag to select right version.
 
 Go to root project directory and run `mix deps.get`:
 ```
