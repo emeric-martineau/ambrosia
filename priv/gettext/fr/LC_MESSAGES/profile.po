@@ -1,0 +1,165 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:46
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:49 lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:52
+msgid "%{nb_days} days"
+msgstr "%{nb_days} jours"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:35
+msgid "Access key age"
+msgstr "Age des tokens"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:73
+msgid "Advanced settings"
+msgstr "Configuration avancée"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/page/register_thank_you.html.eex:7
+msgid "Come back home"
+msgstr "Revenir à l'accueil"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:5
+msgid "Connect"
+msgstr "Connexion"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:83
+msgid "Created [span]%{nb_days}[/span] days ago"
+msgstr "Créé il y a [span]%{nb_days}[/span] jours"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:79
+msgid "Created less than [span]%{nb_days}[/span] days ago"
+msgstr "Créé il a moins de [span]%{nb_days}[/span] jours"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:87
+msgid "Created more than [span]%{nb_days}[/span] days ago"
+msgstr "Créé il y a plus de [span]%{nb_days}[/span] jours"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:13
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:15
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:78
+msgid "Days since the oldest active access key was created:"
+msgstr "Jours depuis que le token a été créé :"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:38
+msgid "Delete"
+msgstr "Supprimer"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:43
+msgid "Don't have an account?"
+msgstr "Pas de compte ?"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:28
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:25 lib/ambrosia_web/templates/pow/session/new.html.eex:25
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:25
+msgid "E-mail address"
+msgstr "Adresse courriel"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:5
+msgid "Edit profile"
+msgstr "Mise à jour du profil"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:41
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié ?"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:67
+msgid "Generate new token"
+msgstr "Générer un nouveau token"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:41
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:38 lib/ambrosia_web/templates/pow/session/new.html.eex:31
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:25
+msgid "Password"
+msgstr "Mot de passe"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/layout/app.html.eex:69
+#: lib/ambrosia_web/templates/layout/app.html.eex:93 lib/ambrosia_web/templates/layout/app.html.eex:120
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:5 lib/ambrosia_web/templates/pow/registration/new.html.eex:63
+msgid "Register"
+msgstr "Se créer un compter"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/session/new.html.eex:43
+msgid "Register now!"
+msgstr "Se créer un compte maintenant !"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:54
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:51 lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:38
+msgid "Repeat your password"
+msgstr "Répété votre mot de passe"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:5
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:50 lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:5
+msgid "Reset password"
+msgstr "Réinitialisation du mot de passe"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:37
+msgid "Send reset link"
+msgstr "Envoyer le lien de réinitilisation"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/layout/app.html.eex:72
+#: lib/ambrosia_web/templates/layout/app.html.eex:94 lib/ambrosia_web/templates/layout/app.html.eex:122
+#: lib/ambrosia_web/templates/pow/registration/new.html.eex:68 lib/ambrosia_web/templates/pow/session/new.html.eex:37
+#: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:42
+msgid "Sign in"
+msgstr "Se connecter"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/page/register_thank_you.html.eex:3
+msgid "Thank you for yout registration!"
+msgstr "Merci pour la création de votre compte !"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:37
+msgid "Token"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/users/advanced_config_user/index.html.eex:5
+msgid "Tokens"
+msgstr ""
+
+#, elixir-format
+#: lib/ambrosia_web/templates/pow/registration/edit.html.eex:66
+msgid "Update"
+msgstr "Mettre à jour"
+
+#, elixir-format
+#: lib/ambrosia_web/templates/page/register_thank_you.html.eex:5
+msgid "You will receive an email to confirm your subscription."
+msgstr "Vous allez recevoir un email de confirmation de la création de votre compte"

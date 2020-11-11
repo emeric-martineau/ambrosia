@@ -20,7 +20,7 @@ defmodule Ambrosia.MixProject do
   def application do
     [
       mod: {Ambrosia.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :set_locale]
     ]
   end
 
@@ -46,7 +46,8 @@ defmodule Ambrosia.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:pow, "~> 1.0.20"},
-      {:floki, "~> 0.26.0", only: :test}
+      {:floki, "~> 0.26.0", only: :test},
+      {:set_locale, "~> 0.2.9"}
     ]
   end
 

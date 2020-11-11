@@ -1,76 +1,79 @@
-## This is a PO Template file.
+## `msgid`s in this file come from POT (.pot) files.
 ##
-## `msgid`s here are often extracted from source code.
-## Add new translations manually only if they're dynamic
-## translations that can't be statically extracted.
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
 ##
-## Run `mix gettext.extract` to bring this file up to
-## date. Leave `msgstr`s empty as changing them here has no
-## effect: edit them in PO (`.po`) files instead.
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: fr\n"
+
 ## From Ecto.Changeset.cast/4
 msgid "can't be blank"
-msgstr ""
+msgstr "ne peut �tre vide"
 
 ## From Ecto.Changeset.unique_constraint/3
 msgid "has already been taken"
-msgstr ""
+msgstr "est déjà utilisé"
 
 ## From Ecto.Changeset.put_change/3
 msgid "is invalid"
-msgstr ""
+msgstr "est invalide"
 
 ## From Ecto.Changeset.validate_acceptance/3
 msgid "must be accepted"
-msgstr ""
+msgstr "doit �tre accepté"
 
 ## From Ecto.Changeset.validate_format/3
 msgid "has invalid format"
-msgstr ""
+msgstr "a un format non conforme"
 
 ## From Ecto.Changeset.validate_subset/3
 msgid "has an invalid entry"
-msgstr ""
+msgstr "a une entrée non conforme"
 
 ## From Ecto.Changeset.validate_exclusion/3
 msgid "is reserved"
-msgstr ""
+msgstr "est réservé"
 
 ## From Ecto.Changeset.validate_confirmation/3
 msgid "does not match confirmation"
-msgstr ""
+msgstr "ne correspond pas à la confirmation"
 
 ## From Ecto.Changeset.no_assoc_constraint/3
 msgid "is still associated with this entry"
-msgstr ""
+msgstr "est déjà associé à cet élément"
 
 msgid "are still associated with this entry"
-msgstr ""
+msgstr "sont déjà associé à cet élément"
 
 ## From Ecto.Changeset.validate_length/3
-msgid "should be %{count} character(s)"
-msgid_plural "should be %{count} character(s)"
+msgid "doit �tre de %{count} caractère(s)"
+msgid_plural "doit �tre de %{count} caractère(s)"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "should be %{count} character(s)"
+msgid_plural "should be %{count} character(s)"
+msgstr[0] "doit contenir %{count} d'élément(s)"
+msgstr[1] "doivent contenir %{count} d'élément(s)"
 
 msgid "should have %{count} item(s)"
 msgid_plural "should have %{count} item(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "doit contenir au moins %{count} caractère(s)"
+msgstr[1] "doivent contenir au moins %{count} caractère(s)"
 
 msgid "should be at least %{count} character(s)"
 msgid_plural "should be at least %{count} character(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "doit contenir au moins %{count} élément(s)"
+msgstr[1] "doivent contenir au moins %{count} élément(s)"
 
 msgid "should have at least %{count} item(s)"
 msgid_plural "should have at least %{count} item(s)"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "should be at most %{count} character(s)"
-msgid_plural "should be at most %{count} character(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "doit contenir au maximum %{count} élément(s)"
+msgstr[1] "doivent contenir au maximum %{count} caractère(s)"
 
 msgid "should have at most %{count} item(s)"
 msgid_plural "should have at most %{count} item(s)"
@@ -79,32 +82,32 @@ msgstr[1] ""
 
 ## From Ecto.Changeset.validate_number/3
 msgid "must be less than %{number}"
-msgstr ""
+msgstr "doit �tre ingérient à %{number}"
 
 msgid "must be greater than %{number}"
-msgstr ""
+msgstr "doit �tre supérieur à %{number}"
 
 msgid "must be less than or equal to %{number}"
-msgstr ""
+msgstr "doit �tre inférieur ou égal à %{number}"
 
 msgid "must be greater than or equal to %{number}"
-msgstr ""
+msgstr "doit �tre supérieur ou égale à %{number}"
 
 msgid "must be equal to %{number}"
-msgstr ""
+msgstr "doit �tre égale à %{number}"
 
 # From login form
 #: lib/ambrosia_web/templates/pow/session/new.html.eex:12
 msgid "Login failed!"
-msgstr ""
+msgstr "Echec de l'authentification"
 
 # From registration form
 #: lib/ambrosia_web/templates/pow/registration/new.html.eex:12
 msgid "Registration failed!"
-msgstr ""
+msgstr "Echec de l'inscription"
 
 # From reset password form
 #: lib/ambrosia_web/templates/pow_reset_password/reset_password/edit.html.eex:12
 #: lib/ambrosia_web/templates/pow_reset_password/reset_password/new.html.eex:12
 msgid "Reset password failed!"
-msgstr ""
+msgstr "Echec de la réinitialisation du mot de passe"

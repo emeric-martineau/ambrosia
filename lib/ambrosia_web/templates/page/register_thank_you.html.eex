@@ -1,9 +1,9 @@
   <div class="ui vertical stripe segment">
     <div class="ui text container">
-      <h3 class="ui header">Thank you for yout registration!</h3>
+      <h3 class="ui header"><%= dgettext("profile", "Thank you for yout registration!") %></h3>
 
-      <p>You will receive an email to confirm your subscription.</p>
+      <p><%= dgettext("profile", "You will receive an email to confirm your subscription.") %></p>
 
-      <%= link "Come back home", class: "ui primary button", to: "/" %>
+      <%= link dgettext("profile", "Come back home"), class: "ui primary button", to: "/" %>
     </div>
   </div>

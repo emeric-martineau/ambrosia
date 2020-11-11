@@ -18,12 +18,12 @@ defmodule AmbrosiaWeb.AdminControllerTest do
   end
 
   test "Get Admin with logged user", %{authed_conn: authed_conn} do
-    conn = get(authed_conn, Routes.admin_path(authed_conn, :index))
+    conn = get(authed_conn, Routes.admin_path(authed_conn, :index, "en"))
     assert html_response(conn, 200) =~ "Call API with user/password"
   end
 
   test "Unauthorized admin page access", %{conn: conn} do
-    conn = get(conn, Routes.admin_path(conn, :index))
+    conn = get(conn, Routes.admin_path(conn, :index, "en"))
     assert html_response(conn, 302) =~ "redirected"
   end
 

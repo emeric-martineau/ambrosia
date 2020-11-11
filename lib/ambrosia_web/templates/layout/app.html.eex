@@ -49,27 +49,32 @@
 <!-- Following Menu -->
 <div class="ui large top fixed hidden menu">
   <div class="ui container">
-      <%= link "Home", class: "active item", to: "/" %>
+      <%= link dgettext("menu", "Home"), class: "active item", to: "/" %>
       <a class="item" href="https://www.phoenixframework.org">Phoenix</a>
       <a class="item" href="https://elixir-lang.org">Elixir</a>
       <a class="item" href="https://www.erlang.org">Erlang</a>
       <%= if Pow.Plug.current_user(@conn) do %>
-      <%= link "Admin", class: "item", to: Routes.admin_path(@conn, :index) %>
+      <%= link dgettext("menu", "Admin"), class: "item", to: Routes.admin_path(@conn, :index) %>
       <% end %>
       <div class="right menu">
+          <div class="item">
+              <%= link "Français", class: "ui", to: Routes.page_path(@conn, :index, "fr") %>
+              /
+              <%= link "English", class: "ui", to: Routes.page_path(@conn, :index, "en") %>
+          </div>
         <%= if Pow.Plug.current_user(@conn) do %>
           <div class="item">
-            <%= link "Edit profile", class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
+            <%= link dgettext("menu", "Edit profile"), class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
           </div>
           <div class="item">
-            <%= link "Log out", class: "ui button", to: Routes.page_path(@conn, :logout) %>
+            <%= link dgettext("menu", "Log out"), class: "ui button", to: Routes.page_path(@conn, :logout) %>
           </div>
         <% else %>
           <div class="item">
-            <%= link "Register", class: "ui primary button", to: Routes.pow_registration_path(@conn, :new) %>
+            <%= link dgettext("profile", "Register"), class: "ui primary button", to: Routes.pow_registration_path(@conn, :new) %>
           </div>
           <div class="item">
-            <%= link "Sign in", class: "ui button", to: Routes.pow_session_path(@conn, :new) %>
+            <%= link dgettext("profile", "Sign in"), class: "ui button", to: Routes.pow_session_path(@conn, :new) %>
           </div>
         <% end %>
     </div>
@@ -83,15 +88,16 @@
     <a class="item" href="https://elixir-lang.org">Elixir</a>
     <a class="item" href="https://www.erlang.org">Erlang</a>
     <%= if Pow.Plug.current_user(@conn) do %>
-    <a class="item" href="https://www.erlang.org">Admin</a>
-    <%= link "Admin", class: "item", to: Routes.admin_path(@conn, :index) %>
+    <%= link dgettext("menu", "Admin"), class: "item", to: Routes.admin_path(@conn, :index) %>
     <% end %>
+    <%= link "Français", class: "ui item", to: Routes.page_path(@conn, :index, "fr") %>
+    <%= link "English", class: "ui item", to: Routes.page_path(@conn, :index, "en") %>
     <%= if Pow.Plug.current_user(@conn) do %>
-        <%= link "Edit profile", class: "ui item", to: Routes.pow_registration_path(@conn, :edit) %>
-        <%= link "Log out", class: "ui item", to: Routes.page_path(@conn, :logout) %>
+        <%= link dgettext("menu", "Edit profile"), class: "ui item", to: Routes.pow_registration_path(@conn, :edit) %>
+        <%= link dgettext("menu", "Log out"), class: "ui item", to: Routes.page_path(@conn, :logout) %>
     <% else %>
-        <%= link "Register", class: "ui item", to: Routes.pow_registration_path(@conn, :new) %>
-        <%= link "Sign in", class: "ui item", to: Routes.pow_session_path(@conn, :new) %>
+        <%= link dgettext("profile", "Register"), class: "ui item", to: Routes.pow_registration_path(@conn, :new) %>
+        <%= link dgettext("profile", "Sign in"), class: "ui item", to: Routes.pow_session_path(@conn, :new) %>
     <% end %>
 </div>
 
@@ -109,17 +115,21 @@
         <a class="item" href="https://elixir-lang.org">Elixir</a>
         <a class="item" href="https://www.erlang.org">Erlang</a>
         <%= if Pow.Plug.current_user(@conn) do %>
-        <%= link "Admin", class: "item", to: Routes.admin_path(@conn, :index) %>
+        <%= link dgettext("menu", "Admin"), class: "item", to: Routes.admin_path(@conn, :index) %>
         <% end %>
         <div class="right item">
+            <%= link "Français", class: "ui inverted", to: Routes.page_path(@conn, :index, "fr") %>
+            /
+            <%= link "English", class: "ui inverted", to: Routes.page_path(@conn, :index, "en") %>
+            <span class="button-space-menu"></span>
           <%= if Pow.Plug.current_user(@conn) do %>
-            <%= link "Edit profile", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :edit) %>
+            <%= link dgettext("menu", "Edit profile"), class: "ui inverted button", to: Routes.pow_registration_path(@conn, :edit) %>
             <span class="button-space-menu"></span>
-            <%= link "Log out", class: "ui inverted button", to: Routes.page_path(@conn, :logout) %>
+            <%= link dgettext("menu", "Log out"), class: "ui inverted button", to: Routes.page_path(@conn, :logout) %>
           <% else %>
-            <%= link "Register", class: "ui inverted button", to: Routes.pow_registration_path(@conn, :new) %>
+            <%= link dgettext("profile", "Register"), class: "ui inverted button", to: Routes.pow_registration_path(@conn, :new) %>
             <span class="button-space-menu"></span>
-            <%= link "Sign in", class: "ui inverted button", to: Routes.pow_session_path(@conn, :new) %>
+            <%= link dgettext("profile", "Sign in"), class: "ui inverted button", to: Routes.pow_session_path(@conn, :new) %>
           <% end %>
         </div>
       </div>
