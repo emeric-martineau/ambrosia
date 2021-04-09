@@ -20,7 +20,7 @@ Before start, you need install:
 
 Then clone this project. Use tag to select right version.
 
-Go to root project directory and run `mix deps.get`:
+Go to root project directory and run `mix deps.get` then `mix deps.compile`:
 ```
 $ mix deps.get
 Resolving Hex dependencies...
@@ -31,17 +31,31 @@ Unchanged:
   cowlib 2.8.0
 ...
 ```
-then run `npm install --prefix "assets"` and finally goto `assets/semantic` and run `gulp build`.
+then run `npm install --prefix "assets"` and finally goto `assets/semantic` and run `npx gulp build`.
 
 Now return to root project path, edit `config/dev.exs` file and set database name and credential of database:
 ```
-  username: "hello",
+  username: "ambrosia",
   password: "password",
-  database: "hello_dev",
+  database: "ambrosia_dev",
   hostname: "localhost",
 ```
 
 ## Run
+
+If you don't have create user into database:
+```
+$ su postgres
+# Create cluste of posgres
+$ pg_createcluster -d /data/postgres/ 12 local_dev
+# Créer database
+$ createdb ambrosia_dev
+$ psql -s ambrosia_dev
+$ alter user postgres password 'postgres';
+
+# If you use another power user that postgres:
+# GRANT ALL PRIVILEGES ON DATABASE ambrosia_dev TO <my_user>;
+```
 
 Now in the same folder, setup the project with running `mix setup` and running `mix phx.server` and say yes when
 prompted:
@@ -107,12 +121,12 @@ scope "/api/v1", AmbrosiaWeb do
 end
 ```
 
-## Semantic UI
+## Fomantic UI
 
-Semantic UI module is in `assets` folder. You found the standard node project. Edit `assets/semantic.json` file to
-setup Semantic UI install.
+Fomantic UI module is in `assets` folder. You found the standard node project. Edit `assets/semantic.json` file to
+setup Fomantic UI install.
 
-Becarefull, if you want change folder of Semantic UI, change webpack config file `assets/webpack.config.js`:
+Becarefull, if you want change folder of Fomantic UI, change webpack config file `assets/webpack.config.js`:
 ```
 new CopyWebpackPlugin([{ from: 'semantic/dist/semantic.min.css', to: '../css/' }]),
 new CopyWebpackPlugin([{ from: 'semantic/dist/themes/default', to: '../css/themes/default' }]),
@@ -121,12 +135,12 @@ new CopyWebpackPlugin([{ from: 'semantic/dist/semantic.min.js', to: '../js/' }])
 
 ### Update
 
-To update Semantic UI, please edit `assets/package.json` and update `"semantic-ui": "^2.4.2"` line.
+To update Fomantic UI, please edit `assets/package.json` and update `"fomantic-ui": "^2.8.7"` line.
 
 ### Set theme
 
-To setup a new theme, please read official Semantic UI documentation
-[Theming ](https://semantic-ui.com/usage/theming.html).
+To setup a new theme, please read official Fomantic UI documentation
+[Theming ](https://fomantic-ui.com/usage/theming.html).
 
 ## Replace mock email
 

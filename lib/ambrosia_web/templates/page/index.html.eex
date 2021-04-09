@@ -14,7 +14,7 @@
         <div class="eight wide column">
           <h3 class="ui header">A bundle under steroid!</h3>
           <p>This bundle include pre-configured Phoenix framework, with Pow for authentification.</p>
-          <p>The pages are beautiful thanks to Semantic UI</p>
+          <p>The pages are beautiful thanks to Fomantic UI</p>
           <h3 class="ui header">API rest ready!</h3>
           <p>Preconfgured for API rest design!</p>
         </div>
@@ -63,10 +63,10 @@
         </div>
 
         <div class="column">
-          <img src="<%= Routes.static_path(@conn, "/images/semantic-ui.png") %>" alt="Semantic UI Language Logo">
+          <img src="<%= Routes.static_path(@conn, "/images/fomantic-ui.png") %>" alt="Fomantic UI Language Logo">
           <p>&nbsp;</p>
           <p>User Interface is the language of the web.</p>
-          <a href="https://semantic-ui.com/introduction/getting-started.html">Get Started</a>
+          <a href="https://fomantic-ui.com/introduction/getting-started.html">Get Started</a>
         </div>
       </div>
     </div>

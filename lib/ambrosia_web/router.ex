@@ -13,10 +13,6 @@ defmodule AmbrosiaWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :internationalization do
-    plug SetLocale, gettext: AmbrosiaWeb.Gettext, default_locale: "en"
-  end
-
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -35,54 +31,14 @@ defmodule AmbrosiaWeb.Router do
     plug AmbrosiaWeb.RequireTokenAuthenticated, error_handler: AmbrosiaWeb.ApiAuthErrorHandler
   end
 
-  scope "/profile", Pow.Phoenix, as: "pow" do
-    pipe_through :browser
+  # scope "/" do
+  #   pipe_through :browser
 
-    patch "/edit", RegistrationController, :update
-    put "/edit", RegistrationController, :update
+  #   pow_routes()
+  #   pow_extension_routes()
+  # end
 
-    post "/login", SessionController, :create
-    delete "/logout", SessionController, :delete
-  end
-
-  scope "/registration", Pow.Phoenix, as: "pow" do
-    pipe_through :browser
-
-    post "/", RegistrationController, :create
-    patch "/", RegistrationController, :update
-    put "/", RegistrationController, :update
-    delete "/", RegistrationController, :delete
-  end
-
-  scope "/reset-password", PowResetPassword.Phoenix, as: "pow_reset_password" do
-    pipe_through :browser
-
-    post "/", ResetPasswordController, :create
-    patch "/:id", ResetPasswordController, :update
-    put "/:id", ResetPasswordController, :update
-  end
-
-  scope "/profile", AmbrosiaWeb do
-    pipe_through :protected
-
-    post "/advanced/tokens", Users.AdvancedConfigUserController, :generate_token
-  end
-
-  AmbrosiaWeb.Routes.ambrosia_routes("/")
-  AmbrosiaWeb.Routes.ambrosia_routes("/:locale")
-
-  scope "/", AmbrosiaWeb do
-    pipe_through [:browser, :internationalization]
-    
-    # you need this entry to support the default root without a locale, it will never be called
-    get "/", PageController, :dummy
-  end
-
-  scope "/:locale", AmbrosiaWeb do
-    pipe_through [:browser, :internationalization]
-
-    get "/", PageController, :index
-  end
+  AmbrosiaWeb.Routes.routes()
 
   scope "/api/v1", AmbrosiaWeb do
     pipe_through [:api, :api_protected]
@@ -101,11 +57,6 @@ defmodule AmbrosiaWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: AmbrosiaWeb.Telemetry
-    end
-
-    scope "/:locale" do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: AmbrosiaWeb.Telemetry
     end

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
 
   <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
   <script src="<%= Routes.static_path(@conn, "/js/semantic.min.js") %>"></script>
@@ -57,11 +57,6 @@
       <%= link dgettext("menu", "Admin"), class: "item", to: Routes.admin_path(@conn, :index) %>
       <% end %>
       <div class="right menu">
-          <div class="item">
-              <%= link "Français", class: "ui", to: Routes.page_path(@conn, :index, "fr") %>
-              /
-              <%= link "English", class: "ui", to: Routes.page_path(@conn, :index, "en") %>
-          </div>
         <%= if Pow.Plug.current_user(@conn) do %>
           <div class="item">
             <%= link dgettext("menu", "Edit profile"), class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
@@ -90,8 +85,6 @@
     <%= if Pow.Plug.current_user(@conn) do %>
     <%= link dgettext("menu", "Admin"), class: "item", to: Routes.admin_path(@conn, :index) %>
     <% end %>
-    <%= link "Français", class: "ui item", to: Routes.page_path(@conn, :index, "fr") %>
-    <%= link "English", class: "ui item", to: Routes.page_path(@conn, :index, "en") %>
     <%= if Pow.Plug.current_user(@conn) do %>
         <%= link dgettext("menu", "Edit profile"), class: "ui item", to: Routes.pow_registration_path(@conn, :edit) %>
         <%= link dgettext("menu", "Log out"), class: "ui item", to: Routes.page_path(@conn, :logout) %>
@@ -118,9 +111,6 @@
         <%= link dgettext("menu", "Admin"), class: "item", to: Routes.admin_path(@conn, :index) %>
         <% end %>
         <div class="right item">
-            <%= link "Français", class: "ui inverted", to: Routes.page_path(@conn, :index, "fr") %>
-            /
-            <%= link "English", class: "ui inverted", to: Routes.page_path(@conn, :index, "en") %>
             <span class="button-space-menu"></span>
           <%= if Pow.Plug.current_user(@conn) do %>
             <%= link dgettext("menu", "Edit profile"), class: "ui inverted button", to: Routes.pow_registration_path(@conn, :edit) %>
