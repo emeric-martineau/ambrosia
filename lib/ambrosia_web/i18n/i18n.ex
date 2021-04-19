@@ -7,15 +7,19 @@ defmodule AmbrosiaWeb.I18n do
   Cookie key is set to "locale" by default.
   """
   defmodule Config do
-    @enforce_keys [:gettext, :default_locale]
-    defstruct [:gettext, :default_locale, :cookie_key, additional_locales: []]
+    @enforce_keys [:gettext]
+    defstruct [:gettext, :cookie_key]
   end
 
   @behaviour Plug
 
   @impl Plug
   def init(opts) do
-    struct!(Config, opts)
+    [key1, key2] = opts[:config]
+
+    o = Application.get_env(key1, key2)
+    
+    struct!(Config, o)
     |> set_config_default_value()
   end
 
@@ -56,7 +60,7 @@ defmodule AmbrosiaWeb.I18n do
 
   defp set_cookie(nil, conn, _config), do: conn
 
-  defp set_cookie(l, conn, config) do 
+  defp set_cookie(l, conn, config) do
     conn
     |> Plug.Conn.put_resp_cookie(config.cookie_key, l, encrypt: true)
   end

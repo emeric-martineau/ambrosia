@@ -18,10 +18,12 @@ defmodule AmbrosiaWeb.PageController do
 
   def set_locale(conn, params) do 
       %{"url" => path, "locale" => locale} = params
-       IO.inspect(conn)
-      #current_path(conn)
+
+      cookie_key = Application.get_env(:ambrosia, :i18n)
+      |> Keyword.get(:cookie_key)
+
       conn
-      #|> Plug.Conn.put_resp_cookie(config.cookie_key, locale, encrypt: true)
+      |> Plug.Conn.put_resp_cookie(cookie_key, locale, encrypt: true)
       |> redirect(to: path)
       |> Plug.Conn.halt()
   end

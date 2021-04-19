@@ -42,3 +42,9 @@ config :ambrosia, :pow,
 
 # Internationalization
 config :ambrosia, AmbrosiaWeb.Gettext, default_locale: "en", locales: ~w(en fr)
+
+config :ambrosia,
+      i18n: [
+        cookie_key: "truc",
+        gettext: AmbrosiaWeb.Gettext,
+      ]

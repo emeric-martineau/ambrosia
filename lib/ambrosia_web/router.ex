@@ -18,7 +18,7 @@ defmodule AmbrosiaWeb.Router do
   end
 
   pipeline :internationalization do
-    plug AmbrosiaWeb.I18n, gettext: AmbrosiaWeb.Gettext, default_locale: "en"
+    plug AmbrosiaWeb.I18n, config: [:ambrosia, :i18n]
   end
 
 
