@@ -3,12 +3,16 @@ defmodule AmbrosiaWeb.Routes do
   defmacro routes() do
     quote do
 
-      #function AmbrosiaWeb.Router.Helpers.pow_email_confirmation_confirmation_url/4 is undefined or private
-
       scope "/", AmbrosiaWeb do
-        pipe_through [:browser]
+        pipe_through [:browser, :internationalization]
 
         get "/", PageController, :index
+      end
+
+      scope "/set-locale/", AmbrosiaWeb do
+        pipe_through [:browser]
+
+        get "/:locale/:url", PageController, :set_locale
       end
 
       scope "/profile", Pow.Phoenix, as: "pow" do

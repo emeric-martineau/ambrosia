@@ -17,6 +17,11 @@ defmodule AmbrosiaWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :internationalization do
+    plug AmbrosiaWeb.I18n, gettext: AmbrosiaWeb.Gettext, default_locale: "en"
+  end
+
+
   pipeline :admin_layout do
     plug :put_layout, {AmbrosiaWeb.LayoutView, :admin}
   end
@@ -30,13 +35,6 @@ defmodule AmbrosiaWeb.Router do
   pipeline :api_protected do
     plug AmbrosiaWeb.RequireTokenAuthenticated, error_handler: AmbrosiaWeb.ApiAuthErrorHandler
   end
-
-  # scope "/" do
-  #   pipe_through :browser
-
-  #   pow_routes()
-  #   pow_extension_routes()
-  # end
 
   AmbrosiaWeb.Routes.routes()
 

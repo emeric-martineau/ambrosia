@@ -1,6 +1,5 @@
 defmodule AmbrosiaWeb.PageController do
   use AmbrosiaWeb, :controller
-  alias Pow.Plug
 
   def index(conn, _params) do
     render(conn, "index.html")
@@ -9,11 +8,21 @@ defmodule AmbrosiaWeb.PageController do
   # Because <a href="" data-method="delete"> not always working
   def logout(conn, _) do
     conn
-    |> Plug.delete()
+    |> Pow.Plug.delete()
     |> render("index.html")
   end
 
   def thank_you(conn, _params) do
     render(conn, "register_thank_you.html")
+  end
+
+  def set_locale(conn, params) do 
+      %{"url" => path, "locale" => locale} = params
+       IO.inspect(conn)
+      #current_path(conn)
+      conn
+      #|> Plug.Conn.put_resp_cookie(config.cookie_key, locale, encrypt: true)
+      |> redirect(to: path)
+      |> Plug.Conn.halt()
   end
 end
