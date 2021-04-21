@@ -3,7 +3,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
 
   alias Ambrosia.Users.UserToken
   alias Ambrosia.Repo
-  alias Pow.Ecto.Schema.Changeset, as: User
+  alias Pow.Ecto.Schema.Changeset, as: PowUser
   alias Pow.Plug
 
   def index(conn, _params) do
@@ -25,7 +25,21 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
     UserToken
     |> Repo.get_by(token: id)
     |> delete_this_token(conn)
-    |> render_index_page
+    |> render_index_page()
+  end
+
+  def update(conn, _params = %{"user" => user_form}) do
+    user = Pow.Plug.current_user(conn)
+
+    new_user = Ecto.Changeset.change user, locale: user_form["locale"]
+    case Ambrosia.Repo.update new_user do
+      {:ok, struct} ->
+        conn = Pow.Plug.create(conn, struct)
+        render_index_page(%{:conn => conn, :error => []})
+      {:error, changeset} ->
+        IO.inspect(changeset)
+        render_index_page(%{:conn => conn, :error => []})
+    end
   end
 
   # Token not found.
@@ -56,10 +70,10 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
 
   # If error not empty, check it and return true or false
   defp check_password(user, password, config) do
-    User.verify_password(user, password, config)
+    PowUser.verify_password(user, password, config)
   end
 
-  # User password is ok. Return Conn.t()
+  # PowUser password is ok. Return Conn.t()
   defp create_token(true, conn, user) do
     attrs = %{
       :create_at => DateTime.utc_now(),
@@ -76,7 +90,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
     %{:conn => conn, :error => []}
   end
 
-  # User password is wrong. Return error message
+  # PowUser password is wrong. Return error message
   defp create_token(false, conn, _user) do
     %{:conn => conn, :error => [current_password: {"is invalid", [validation: :required]}]}
   end

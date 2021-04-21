@@ -8,6 +8,8 @@ defmodule Ambrosia.Users.User do
     pow_user_fields()
 
     timestamps()
+
+    field :locale, :string
   end
 
   def changeset(user_or_changeset, attrs) do

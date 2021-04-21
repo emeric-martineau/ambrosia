@@ -2,6 +2,25 @@
   <div class="ui centered grid container">
     <div class="nine wide column">
 
+      <h1><%= dgettext("profile", "Profile") %></h1>
+
+      <div class="ui fluid card">
+        <div class="content">
+          <%= form_for @conn,  Routes.advanced_config_user_path(@conn, :update) , [as: :user, class: add_class_error(@data, "ui form", "error")], fn f -> %>
+
+          <div class="field">
+            <div class="ui left input">
+              <%= text_input f, :locale %>
+            </div>
+          </div>
+
+          <button class="ui button" type="submit">
+            <%= dgettext("profile", "Update") %>
+          </button>
+          <% end %>
+        </div>
+      </div>
+
       <h1><%= dgettext("profile", "Tokens") %></h1>
 
       <div class="ui fluid card">

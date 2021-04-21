@@ -28,6 +28,7 @@ defmodule AmbrosiaWeb.Routes do
         get "/logout", PageController, :logout
         get "/advanced", Users.AdvancedConfigUserController, :index
         get "/advanced/tokens/delete/:id", Users.AdvancedConfigUserController, :delete_token
+        post "/update", Users.AdvancedConfigUserController, :update
       end
 
       scope "/admin", AmbrosiaWeb do

@@ -2,6 +2,8 @@ defmodule AmbrosiaWeb.PageController do
   use AmbrosiaWeb, :controller
 
   def index(conn, _params) do
+  Pow.Plug.current_user(conn)
+  |> IO.inspect()
     render(conn, "index.html")
   end
 
