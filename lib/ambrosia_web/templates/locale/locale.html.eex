@@ -1,0 +1,9 @@
+<div class="<%= @css_name  %> ui selection dropdown">
+    <input name="<%= @name %>" type="hidden" value="en">
+    <i class="dropdown icon"></i>
+    <div class="text">English</div>
+    <div class="menu">
+    <div class="item" data-value="en">English</div>
+    <div class="item" data-value="fr">French</div>
+    </div>
+</div>

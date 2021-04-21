@@ -120,6 +120,8 @@ defmodule AmbrosiaWeb.PageControllerTest do
     assert html_response(conn, 200) =~ "Thank you for yout registration!"
   end
 
+  # TODO test change lang
+
   # test "Test redirect", %{conn: conn} do
   #   conn = get(conn, "/")
   #   assert redirected_to(conn) == "/en"

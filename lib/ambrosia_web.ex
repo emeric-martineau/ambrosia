@@ -69,6 +69,11 @@ defmodule AmbrosiaWeb do
       import AmbrosiaWeb.ErrorHelpers
       import AmbrosiaWeb.Gettext
       alias AmbrosiaWeb.Router.Helpers, as: Routes
+
+      
+      def render_locale(assigns \\ []) do
+        render(AmbrosiaWeb.LocaleView, "locale.html", assigns)
+      end
     end
   end
 

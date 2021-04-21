@@ -60,4 +60,6 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserControllerTest do
     conn = get(conn, Routes.advanced_config_user_path(conn, :index))
     assert redirected_to(conn) =~  Routes.pow_session_path(conn, :new)
   end
+
+  # TODO test change lang
 end

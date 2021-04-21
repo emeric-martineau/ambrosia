@@ -40,6 +40,8 @@
         .sidebar('attach events', '.toc.item')
       ;
 
+      // TODO add same functionto locale
+
     })
   ;
   </script>
@@ -51,6 +53,9 @@
   <div class="ui container">
       <div class="right menu">
           <%= link dgettext("menu", "Home"), class: "item", to: "/" %>
+          <div class="item">
+            <%= raw(render_locale( css_name: "lang locale", name: "locale")) %>
+          </div>
           <div class="item">
             <%= link dgettext("menu", "Edit profile"), class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
           </div>

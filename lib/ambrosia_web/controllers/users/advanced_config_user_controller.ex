@@ -28,17 +28,19 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
     |> render_index_page()
   end
 
-  def update(conn, _params = %{"user" => user_form}) do
+  def update(conn, params = %{"locale" => locale}) do
     user = Pow.Plug.current_user(conn)
 
-    new_user = Ecto.Changeset.change user, locale: user_form["locale"]
+    # TODO check if lang is in know locale
+
+    new_user = Ecto.Changeset.change user, locale: locale
+
     case Ambrosia.Repo.update new_user do
       {:ok, struct} ->
         conn = Pow.Plug.create(conn, struct)
         render_index_page(%{:conn => conn, :error => []})
       {:error, changeset} ->
-        IO.inspect(changeset)
-        render_index_page(%{:conn => conn, :error => []})
+        render_index_page(%{:conn => conn, :error => changeset.errors})
     end
   end
 

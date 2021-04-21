@@ -67,3 +67,12 @@ Wrote priv/gettext/fr/LC_MESSAGES/menu.po (0 new translations, 0 removed, 4 unch
 Wrote priv/gettext/fr/LC_MESSAGES/errors.po (0 new translations, 1 removed, 23 unchanged, 1 reworded (fuzzy))
 Wrote priv/gettext/fr/LC_MESSAGES/profile.po (1 new translation, 0 removed, 28 unchanged, 0 reworded (fuzzy))
 ```
+## Add new lang
+
+Edit `config/config.exs` file and add new locale:
+```
+# Internationalization
+config :ambrosia, AmbrosiaWeb.Gettext, default_locale: "en", locales: ~w(en fr)
+```
+
+After, add in `lib/ambrosia_web/templates/layout/_locales_list.eex` menu file
