@@ -72,7 +72,9 @@ Wrote priv/gettext/fr/LC_MESSAGES/profile.po (1 new translation, 0 removed, 28 u
 Edit `config/config.exs` file and add new locale:
 ```
 # Internationalization
-config :ambrosia, AmbrosiaWeb.Gettext, default_locale: "en", locales: ~w(en fr)
+config :ambrosia, AmbrosiaWeb.Gettext, default_locale: "en", locales: ~w(en fr), locales_text: [en: "English", fr: "Français"]
 ```
 
-After, add in `lib/ambrosia_web/templates/layout/_locales_list.eex` menu file
+`locales_text` is to generate the language menu.
+
+After, add in `lib/ambrosia_web/templates/layout/_locales_list.eex` menu file.

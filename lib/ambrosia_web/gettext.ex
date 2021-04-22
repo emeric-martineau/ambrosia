@@ -21,4 +21,6 @@ defmodule AmbrosiaWeb.Gettext do
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
   use Gettext, otp_app: :ambrosia
+
+  def get_locales_text(), do: Application.get_env(:ambrosia, __MODULE__)[:locales_text]
 end

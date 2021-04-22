@@ -6,12 +6,11 @@
 
       <div class="ui fluid card">
         <div class="content">
-          <%= form_for @conn,  Routes.advanced_config_user_path(@conn, :update) , [as: :user, class: add_class_error(@data, "ui form", "error")], fn f -> %>
+          <%= form_for @conn,  Routes.advanced_config_user_path(@conn, :update) , [as: :user, class: add_class_error(@data, "ui form", "error")], fn _f -> %>
 
-          <!-- TODO select current value -->
           <div class="field">
             <div class="ui left input">
-              <%= raw(render_locale( css_name: "lang locale", name: "locale")) %>
+              <%= raw(render_locale(css_name: "lang locale", name: "locale", default_value: @current_locale)) %>
             </div>
           </div>
 

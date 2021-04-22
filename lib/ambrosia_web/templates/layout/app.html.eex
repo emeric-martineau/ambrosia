@@ -71,7 +71,7 @@
       <% end %>
       <div class="right menu">
           <div class="item">
-            <%= raw(render_locale( css_name: "lang locale", name: "locale")) %>
+            <%= raw(render_locale(css_name: "lang locale", name: "locale")) %>
           </div>
         <%= if Pow.Plug.current_user(@conn) do %>
           <div class="item">
@@ -98,7 +98,7 @@
     <a class="item" href="https://www.phoenixframework.org">Phoenix</a>
     <a class="item" href="https://elixir-lang.org">Elixir</a>
     <a class="item" href="https://www.erlang.org">Erlang</a>
-    <%= raw(render_locale( css_name: "lang locale", name: "locale")) %>
+    <%= raw(render_locale(css_name: "lang locale", name: "locale")) %>
     <%= if Pow.Plug.current_user(@conn) do %>
     <%= link dgettext("menu", "Admin"), class: "item", to: Routes.admin_path(@conn, :index) %>
     <% end %>
@@ -130,7 +130,7 @@
         <span class="button-space-menu"></span>
         <div class="right item">
           <div class="right menu">
-            <%= raw(render_locale( css_name: "lang locale", name: "locale")) %>
+            <%= raw(render_locale(css_name: "lang locale", name: "locale")) %>
           </div> 
           <span class="button-space-menu"></span>           
           <%= if Pow.Plug.current_user(@conn) do %>

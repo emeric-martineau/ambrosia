@@ -72,7 +72,17 @@ defmodule AmbrosiaWeb do
 
       
       def render_locale(assigns \\ []) do
-        render(AmbrosiaWeb.LocaleView, "locale.html", assigns)
+        a = Keyword.has_key?(assigns, :default_value)
+        |> update_locale_context(assigns)
+        
+        render(AmbrosiaWeb.LocaleView, "locale.html", a)
+      end
+
+      defp update_locale_context(true, assigns), do: Keyword.merge(assigns, [list_locale: AmbrosiaWeb.Gettext.get_locales_text()])
+      
+      defp update_locale_context(false, assigns) do
+        assigns
+        |> Keyword.merge([list_locale: AmbrosiaWeb.Gettext.get_locales_text(), default_value: "en"])
       end
     end
   end

@@ -43,7 +43,7 @@ defmodule AmbrosiaWeb.I18n do
 
   defp call_with_locale(conn, config) do
     %{cookies: cookies} = conn
-                          |> fetch_cookies([encrypted: config.cookie_key])
+    |> fetch_cookies([encrypted: config.cookie_key])
 
     # Get from cookie
     cookies[config.cookie_key]

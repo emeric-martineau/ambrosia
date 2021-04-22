@@ -1,9 +1,10 @@
 <div class="<%= @css_name  %> ui selection dropdown">
-    <input name="<%= @name %>" type="hidden" value="en">
+    <input name="<%= @name %>" type="hidden" value="<%= @default_value %>">
     <i class="dropdown icon"></i>
-    <div class="text">English</div>
+    <div class="text"><%= Keyword.get(@list_locale, String.to_atom(@default_value)) %></div>
     <div class="menu">
-    <div class="item" data-value="en">English</div>
-    <div class="item" data-value="fr">French</div>
+    <%= for l <- Keyword.keys(@list_locale) do %>
+    <div class="item" data-value="<%= l %>"><%= Keyword.get(@list_locale, l) %></div>
+    <% end %>
     </div>
 </div>

@@ -6,7 +6,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
   alias Pow.Ecto.Schema.Changeset, as: PowUser
   alias Pow.Plug
 
-  def index(conn, _params) do
+  def index(conn, _params) do   
     render_index_page(%{:conn => conn, :error => []})
   end
 
@@ -28,20 +28,33 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
     |> render_index_page()
   end
 
-  def update(conn, params = %{"locale" => locale}) do
+  def update(conn, _params = %{"locale" => locale}) do
+    Gettext.known_locales(AmbrosiaWeb.Gettext)
+    |> Enum.member?(locale)
+    |> update_user_locale(conn, locale)
+    |> manage_update_user_locale_error(conn)
+  end
+
+  defp update_user_locale(true, conn, locale) do
     user = Pow.Plug.current_user(conn)
-
-    # TODO check if lang is in know locale
-
     new_user = Ecto.Changeset.change user, locale: locale
+    Ambrosia.Repo.update new_user
+  end
 
-    case Ambrosia.Repo.update new_user do
-      {:ok, struct} ->
-        conn = Pow.Plug.create(conn, struct)
-        render_index_page(%{:conn => conn, :error => []})
-      {:error, changeset} ->
-        render_index_page(%{:conn => conn, :error => changeset.errors})
-    end
+  defp update_user_locale(false, _conn, locale) do
+    changeset = %{
+      :errors => [locale: {"Invalid locale '#{locale}'", []}]
+    }
+    {:error, changeset}
+  end
+
+  defp manage_update_user_locale_error({:ok, struct}, conn) do
+    conn = Pow.Plug.create(conn, struct)
+    render_index_page(%{:conn => conn, :error => []})
+  end
+  
+  defp manage_update_user_locale_error({:error, changeset}, conn) do
+    render_index_page(%{:conn => conn, :error => changeset.errors})
   end
 
   # Token not found.
@@ -111,10 +124,12 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
   end
 
   defp render_index_page(_conn_and_error = %{:conn => conn, :error => error}) do
+    user = Plug.current_user(conn)
+
     tokens = UserToken
              |> Repo.all()
              |> Enum.map(fn ut -> Map.put(ut, :since_days, diff_number_day_since_today(ut.updated_at))  end)
 
-    render(conn, "index.html", data: %{:errors => error, :tokens => tokens})
+    render(conn, "index.html", data: %{:errors => error, :tokens => tokens}, current_locale: user.locale)
   end
 end

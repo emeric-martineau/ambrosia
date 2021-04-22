@@ -54,7 +54,7 @@
       <div class="right menu">
           <%= link dgettext("menu", "Home"), class: "item", to: "/" %>
           <div class="item">
-            <%= raw(render_locale( css_name: "lang locale", name: "locale")) %>
+            <%= raw(render_locale(css_name: "lang locale", name: "locale")) %>
           </div>
           <div class="item">
             <%= link dgettext("menu", "Edit profile"), class: "ui button", to: Routes.pow_registration_path(@conn, :edit) %>
