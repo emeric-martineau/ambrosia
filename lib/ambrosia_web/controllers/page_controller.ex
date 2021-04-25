@@ -23,7 +23,7 @@ defmodule AmbrosiaWeb.PageController do
       |> Keyword.get(:cookie_key)
 
       conn
-      |> Plug.Conn.put_resp_cookie(cookie_key, locale, encrypt: true)
+      |> Plug.Conn.put_resp_cookie(cookie_key, locale)
       |> redirect(to: path)
       |> Plug.Conn.halt()
   end
