@@ -9,7 +9,7 @@ defmodule Ambrosia.Users.User do
 
     timestamps()
 
-    field :locale, :string
+    field :locale, :string, default: "en"
   end
 
   def changeset(user_or_changeset, attrs) do

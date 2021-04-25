@@ -49,7 +49,7 @@ defmodule AmbrosiaWeb.I18n do
     |> set_locale(conn, config)
   end
 
-  defp set_locale(nil, _conn, _config), do: nil
+  defp set_locale(nil, conn, _config), do: conn
 
   defp set_locale(lang, conn, config) do
     Gettext.put_locale(config.gettext, lang)

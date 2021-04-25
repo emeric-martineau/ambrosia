@@ -26,7 +26,7 @@ defmodule AmbrosiaWeb.PageControllerTest do
                       |> Floki.parse_document()
 
     nodes = document
-            |> Floki.find("a.inverted:nth-child(4)")
+            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(5)")
 
     assert length(nodes) == 1
 
@@ -85,7 +85,7 @@ defmodule AmbrosiaWeb.PageControllerTest do
                       |> Floki.parse_document()
 
     nodes = document
-            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(2)")
+            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(3)")
 
     assert length(nodes) == 1
 
@@ -104,7 +104,7 @@ defmodule AmbrosiaWeb.PageControllerTest do
                       |> Floki.parse_document()
 
     nodes = document
-            |> Floki.find("a.inverted:nth-child(4)")
+            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(5)")
 
     assert length(nodes) == 1
 
@@ -122,8 +122,16 @@ defmodule AmbrosiaWeb.PageControllerTest do
 
   # TODO test change lang
 
-  # test "Test redirect", %{conn: conn} do
-  #   conn = get(conn, "/")
-  #   assert redirected_to(conn) == "/en"
-  # end
+  test "Test set nez locqle", %{conn: conn} do
+    cookie_key = Application.get_env(:ambrosia, :i18n)
+    |> Keyword.get(:cookie_key)
+
+    conn = get(conn, "/set-locale/fr/%2F")
+    assert redirected_to(conn) == "/"
+
+    %{cookies: cookies} = conn
+    |> Plug.Conn.fetch_cookies()
+
+    assert cookies[cookie_key] == "fr"
+  end
 end
