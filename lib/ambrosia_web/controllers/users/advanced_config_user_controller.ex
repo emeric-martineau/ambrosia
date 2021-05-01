@@ -28,7 +28,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
     |> render_index_page()
   end
 
-  def update(conn, _params = %{"locale" => locale}) do
+  def update(conn, _params = %{"user_locale" => locale}) do
     Gettext.known_locales(AmbrosiaWeb.Gettext)
     |> Enum.member?(locale)
     |> update_user_locale(conn, locale)

@@ -82,7 +82,7 @@ defmodule AmbrosiaWeb do
       
       defp update_locale_context(false, assigns) do
         assigns
-        |> Keyword.merge([list_locale: AmbrosiaWeb.Gettext.get_locales_text(), default_value: "en"])
+        |> Keyword.merge([list_locale: AmbrosiaWeb.Gettext.get_locales_text(), default_value: Gettext.get_locale(AmbrosiaWeb.Gettext)])
       end
     end
   end

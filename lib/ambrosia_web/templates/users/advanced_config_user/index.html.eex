@@ -1,3 +1,12 @@
+<script>
+ready_fn.push(function() {
+  $('.user.lang.locale.ui.selection.dropdown')
+  .dropdown({
+    clearable: false
+  });
+})
+</script>
+
 <div class="page-login">
   <div class="ui centered grid container">
     <div class="nine wide column">
@@ -10,7 +19,7 @@
 
           <div class="field">
             <div class="ui left input">
-              <%= raw(render_locale(css_name: "lang locale", name: "locale", default_value: @current_locale)) %>
+              <%= raw(render_locale(css_name: "user lang locale", name: "user_locale", default_value: @current_locale)) %>
             </div>
           </div>
 
