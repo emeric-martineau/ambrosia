@@ -11,16 +11,12 @@ defmodule AmbrosiaWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug AmbrosiaWeb.I18n, config: [:ambrosia, :i18n]
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
-
-  pipeline :internationalization do
-    plug AmbrosiaWeb.I18n, config: [:ambrosia, :i18n]
-  end
-
 
   pipeline :admin_layout do
     plug :put_layout, {AmbrosiaWeb.LayoutView, :admin}
