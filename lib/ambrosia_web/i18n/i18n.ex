@@ -56,9 +56,13 @@ defmodule AmbrosiaWeb.I18n do
     conn
   end
 
-  defp get_locale_from_user(conn, config) do
-    # TODO
-    nil
+  defp get_locale_from_user(conn, _config) do
+    conn
+    |> Pow.Plug.current_user()
+    |> case do
+      nil -> nil
+      user -> user.locale
+    end
   end
 
   defp get_locale_from_cookie(nil, conn, config) do

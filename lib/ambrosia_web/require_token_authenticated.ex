@@ -23,7 +23,6 @@ defmodule AmbrosiaWeb.RequireTokenAuthenticated do
     Config.get(config, :error_handler) || raise_no_error_handler()
   end
 
-  # TODO add generate token page
   @doc false
   @spec call(Conn.t(), atom()) :: Conn.t()
   def call(conn, handler) do

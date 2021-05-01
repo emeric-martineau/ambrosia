@@ -99,7 +99,7 @@
 
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
-    <%= link "Home", class: "active item", to: "/" %>
+    <%= link dgettext("menu", "Home"), class: "active item", to: "/" %>
     <a class="item" href="https://www.phoenixframework.org">Phoenix</a>
     <a class="item" href="https://elixir-lang.org">Elixir</a>
     <a class="item" href="https://www.erlang.org">Erlang</a>
@@ -124,7 +124,7 @@
         <a class="toc item">
           <i class="sidebar icon"></i>
         </a>
-        <%= link "Home", class: "active item", to: "/" %>
+        <%= link dgettext("menu", "Home"), class: "active item", to: "/" %>
         <a class="item" href="https://www.phoenixframework.org">Phoenix</a>
         <a class="item" href="https://elixir-lang.org">Elixir</a>
         <a class="item" href="https://www.erlang.org">Erlang</a>
