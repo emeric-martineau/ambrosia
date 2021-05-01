@@ -6,7 +6,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
   alias Pow.Ecto.Schema.Changeset, as: PowUser
   alias Pow.Plug
 
-  def index(conn, _params) do   
+  def index(conn, _params) do
     render_index_page(%{:conn => conn, :error => []})
   end
 
