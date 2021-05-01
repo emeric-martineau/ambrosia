@@ -26,7 +26,7 @@ defmodule AmbrosiaWeb.PageControllerTest do
                       |> Floki.parse_document()
 
     nodes = document
-            |> Floki.find("a.inverted:nth-child(4)")
+            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(5)")
 
     assert length(nodes) == 1
 
@@ -85,7 +85,7 @@ defmodule AmbrosiaWeb.PageControllerTest do
                       |> Floki.parse_document()
 
     nodes = document
-            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(2)")
+            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(3)")
 
     assert length(nodes) == 1
 
@@ -104,7 +104,7 @@ defmodule AmbrosiaWeb.PageControllerTest do
                       |> Floki.parse_document()
 
     nodes = document
-            |> Floki.find("a.inverted:nth-child(4)")
+            |> Floki.find("body > div.pusher > div:nth-child(1) > div > div > div > a:nth-child(5)")
 
     assert length(nodes) == 1
 
@@ -120,8 +120,43 @@ defmodule AmbrosiaWeb.PageControllerTest do
     assert html_response(conn, 200) =~ "Thank you for yout registration!"
   end
 
-  # test "Test redirect", %{conn: conn} do
-  #   conn = get(conn, "/")
-  #   assert redirected_to(conn) == "/en"
-  # end
+  test "Test set locale", %{conn: conn} do
+    cookie_key = Application.get_env(:ambrosia, :i18n)
+    |> Keyword.get(:cookie_key)
+
+    conn = get(conn, "/set-locale/fr/%2F")
+    assert redirected_to(conn) == "/"
+
+    %{cookies: cookies} = conn
+    |> Plug.Conn.fetch_cookies()
+
+    assert cookies[cookie_key] == "fr"
+
+    conn = get(conn, Routes.pow_session_path(conn, :new))
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
+  end
+
+  test "Test locale from http header with ponderation", %{conn: conn} do
+    conn = conn
+      |> Plug.Conn.put_req_header("accept-language", "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7")
+      |> get(Routes.pow_session_path(conn, :new))
+
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
+  end
+
+  test "Test locale from http header with ponderation just last available", %{conn: conn} do
+    conn = conn
+      |> Plug.Conn.put_req_header("accept-language", "zz;q=0.9,ttt;q=0.8,fr;q=0.7")
+      |> get(Routes.pow_session_path(conn, :new))
+
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
+  end
+
+  test "Test locale from http header", %{conn: conn} do
+    conn = conn
+      |> Plug.Conn.put_req_header("accept-language", "fr")
+      |> get(Routes.pow_session_path(conn, :new))
+
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
+  end
 end

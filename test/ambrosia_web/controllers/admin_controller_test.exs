@@ -55,4 +55,6 @@ defmodule AmbrosiaWeb.AdminControllerTest do
 
     assert length(nodes) == 1
   end
+
+  # TODO test change lang
 end

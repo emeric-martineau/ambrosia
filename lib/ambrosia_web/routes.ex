@@ -3,16 +3,20 @@ defmodule AmbrosiaWeb.Routes do
   defmacro routes() do
     quote do
 
-      #function AmbrosiaWeb.Router.Helpers.pow_email_confirmation_confirmation_url/4 is undefined or private
-
       scope "/", AmbrosiaWeb do
-        pipe_through [:browser]
+        pipe_through :browser
 
         get "/", PageController, :index
       end
 
+      scope "/set-locale/", AmbrosiaWeb do
+        pipe_through :browser
+
+        get "/:locale/:url", PageController, :set_locale
+      end
+
       scope "/profile", Pow.Phoenix, as: "pow" do
-        pipe_through [:browser]
+        pipe_through :browser
 
         get "/edit", RegistrationController, :edit
         get "/login", SessionController, :new
@@ -24,6 +28,7 @@ defmodule AmbrosiaWeb.Routes do
         get "/logout", PageController, :logout
         get "/advanced", Users.AdvancedConfigUserController, :index
         get "/advanced/tokens/delete/:id", Users.AdvancedConfigUserController, :delete_token
+        post "/update", Users.AdvancedConfigUserController, :update
       end
 
       scope "/admin", AmbrosiaWeb do
@@ -39,32 +44,32 @@ defmodule AmbrosiaWeb.Routes do
       end
 
       scope "/confirm-email", PowEmailConfirmation.Phoenix, as: "pow_email_confirmation" do
-        pipe_through [:browser]
+        pipe_through :browser
 
         get "/:id", ConfirmationController, :show
       end
 
       scope "/reset-password/new", PowResetPassword.Phoenix, as: "pow" do
-        pipe_through [:browser]
+        pipe_through :browser
 
         get "/", ResetPasswordController, :new
       end
 
       scope "/registration", Pow.Phoenix, as: "pow" do
-        pipe_through [:browser]
+        pipe_through :browser
 
         get "/new", RegistrationController, :new
       end
 
       scope "/reset-password", PowResetPassword.Phoenix, as: "pow_reset_password" do
-        pipe_through [:browser]
+        pipe_through :browser
 
         get "/:id", ResetPasswordController, :edit
         get "/", ResetPasswordController, :new
       end
 
       scope "/registration", AmbrosiaWeb do
-        pipe_through [:browser]
+        pipe_through :browser
 
         get "/thank-you", PageController, :thank_you
       end

@@ -1,6 +1,40 @@
+<script>
+ready_fn.push(function() {
+  $('.user.lang.locale.ui.selection.dropdown')
+  .dropdown({
+    clearable: false
+  });
+})
+</script>
+
 <div class="page-login">
   <div class="ui centered grid container">
     <div class="nine wide column">
+
+      <h1><%= dgettext("profile", "Profile") %></h1>
+
+      <div class="ui fluid card">
+        <div class="content">
+          <%= form_for @conn,  Routes.advanced_config_user_path(@conn, :update) , [as: :user, class: add_class_error(@data, "ui form", "error")], fn _f -> %>
+
+          <div class="field">
+            <div class="ui left input">
+              <%= raw(render_locale(css_name: "user lang locale", name: "user_locale", default_value: @current_locale)) %>
+            </div>
+          </div>
+
+          <%= error_tag @data, :locale, fn error -> %>
+            <div class="ui error message">
+              <p><%= error %></p>
+            </div>
+          <% end %>
+
+          <button class="ui button" type="submit">
+            <%= dgettext("profile", "Update") %>
+          </button>
+          <% end %>
+        </div>
+      </div>
 
       <h1><%= dgettext("profile", "Tokens") %></h1>
 

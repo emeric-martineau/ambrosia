@@ -69,6 +69,21 @@ defmodule AmbrosiaWeb do
       import AmbrosiaWeb.ErrorHelpers
       import AmbrosiaWeb.Gettext
       alias AmbrosiaWeb.Router.Helpers, as: Routes
+
+      
+      def render_locale(assigns \\ []) do
+        a = Keyword.has_key?(assigns, :default_value)
+        |> update_locale_context(assigns)
+        
+        render(AmbrosiaWeb.LocaleView, "locale.html", a)
+      end
+
+      defp update_locale_context(true, assigns), do: Keyword.merge(assigns, [list_locale: AmbrosiaWeb.Gettext.get_locales_text()])
+      
+      defp update_locale_context(false, assigns) do
+        assigns
+        |> Keyword.merge([list_locale: AmbrosiaWeb.Gettext.get_locales_text(), default_value: Gettext.get_locale(AmbrosiaWeb.Gettext)])
+      end
     end
   end
 

@@ -11,6 +11,7 @@ defmodule AmbrosiaWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug AmbrosiaWeb.I18n, config: [:ambrosia, :i18n]
   end
 
   pipeline :api do
@@ -30,13 +31,6 @@ defmodule AmbrosiaWeb.Router do
   pipeline :api_protected do
     plug AmbrosiaWeb.RequireTokenAuthenticated, error_handler: AmbrosiaWeb.ApiAuthErrorHandler
   end
-
-  # scope "/" do
-  #   pipe_through :browser
-
-  #   pow_routes()
-  #   pow_extension_routes()
-  # end
 
   AmbrosiaWeb.Routes.routes()
 

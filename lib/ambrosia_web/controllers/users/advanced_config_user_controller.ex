@@ -3,7 +3,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
 
   alias Ambrosia.Users.UserToken
   alias Ambrosia.Repo
-  alias Pow.Ecto.Schema.Changeset, as: User
+  alias Pow.Ecto.Schema.Changeset, as: PowUser
   alias Pow.Plug
 
   def index(conn, _params) do
@@ -25,7 +25,36 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
     UserToken
     |> Repo.get_by(token: id)
     |> delete_this_token(conn)
-    |> render_index_page
+    |> render_index_page()
+  end
+
+  def update(conn, _params = %{"user_locale" => locale}) do
+    Gettext.known_locales(AmbrosiaWeb.Gettext)
+    |> Enum.member?(locale)
+    |> update_user_locale(conn, locale)
+    |> manage_update_user_locale_error(conn)
+  end
+
+  defp update_user_locale(true, conn, locale) do
+    user = Pow.Plug.current_user(conn)
+    new_user = Ecto.Changeset.change user, locale: locale
+    Ambrosia.Repo.update new_user
+  end
+
+  defp update_user_locale(false, _conn, locale) do
+    changeset = %{
+      :errors => [locale: {"Invalid locale '#{locale}'", []}]
+    }
+    {:error, changeset}
+  end
+
+  defp manage_update_user_locale_error({:ok, struct}, conn) do
+    conn = Pow.Plug.create(conn, struct)
+    render_index_page(%{:conn => conn, :error => []})
+  end
+  
+  defp manage_update_user_locale_error({:error, changeset}, conn) do
+    render_index_page(%{:conn => conn, :error => changeset.errors})
   end
 
   # Token not found.
@@ -56,10 +85,10 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
 
   # If error not empty, check it and return true or false
   defp check_password(user, password, config) do
-    User.verify_password(user, password, config)
+    PowUser.verify_password(user, password, config)
   end
 
-  # User password is ok. Return Conn.t()
+  # PowUser password is ok. Return Conn.t()
   defp create_token(true, conn, user) do
     attrs = %{
       :create_at => DateTime.utc_now(),
@@ -76,7 +105,7 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
     %{:conn => conn, :error => []}
   end
 
-  # User password is wrong. Return error message
+  # PowUser password is wrong. Return error message
   defp create_token(false, conn, _user) do
     %{:conn => conn, :error => [current_password: {"is invalid", [validation: :required]}]}
   end
@@ -95,10 +124,12 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserController do
   end
 
   defp render_index_page(_conn_and_error = %{:conn => conn, :error => error}) do
+    user = Plug.current_user(conn)
+
     tokens = UserToken
              |> Repo.all()
              |> Enum.map(fn ut -> Map.put(ut, :since_days, diff_number_day_since_today(ut.updated_at))  end)
 
-    render(conn, "index.html", data: %{:errors => error, :tokens => tokens})
+    render(conn, "index.html", data: %{:errors => error, :tokens => tokens}, current_locale: user.locale)
   end
 end

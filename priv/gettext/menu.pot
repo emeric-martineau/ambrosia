@@ -11,30 +11,30 @@ msgid ""
 msgstr ""
 
 #, elixir-format
-#: lib/ambrosia_web/templates/layout/app.html.eex:57
-#: lib/ambrosia_web/templates/layout/app.html.eex:87 lib/ambrosia_web/templates/layout/app.html.eex:112
+#: lib/ambrosia_web/templates/layout/app.html.eex:69
+#: lib/ambrosia_web/templates/layout/app.html.eex:98 lib/ambrosia_web/templates/layout/app.html.eex:123
 msgid "Admin"
 msgstr ""
 
 #, elixir-format
 #: lib/ambrosia_web/templates/layout/admin.html.eex:55
 #: lib/ambrosia_web/templates/layout/admin.html.eex:67 lib/ambrosia_web/templates/layout/admin.html.eex:82
-#: lib/ambrosia_web/templates/layout/app.html.eex:62 lib/ambrosia_web/templates/layout/app.html.eex:90
-#: lib/ambrosia_web/templates/layout/app.html.eex:116
+#: lib/ambrosia_web/templates/layout/app.html.eex:74 lib/ambrosia_web/templates/layout/app.html.eex:101
+#: lib/ambrosia_web/templates/layout/app.html.eex:140
 msgid "Edit profile"
 msgstr ""
 
 #, elixir-format
 #: lib/ambrosia_web/templates/layout/admin.html.eex:53
 #: lib/ambrosia_web/templates/layout/admin.html.eex:66 lib/ambrosia_web/templates/layout/admin.html.eex:77
-#: lib/ambrosia_web/templates/layout/app.html.eex:52
+#: lib/ambrosia_web/templates/layout/app.html.eex:64
 msgid "Home"
 msgstr ""
 
 #, elixir-format
 #: lib/ambrosia_web/templates/layout/admin.html.eex:58
 #: lib/ambrosia_web/templates/layout/admin.html.eex:68 lib/ambrosia_web/templates/layout/admin.html.eex:84
-#: lib/ambrosia_web/templates/layout/app.html.eex:65 lib/ambrosia_web/templates/layout/app.html.eex:91
-#: lib/ambrosia_web/templates/layout/app.html.eex:118
+#: lib/ambrosia_web/templates/layout/app.html.eex:77 lib/ambrosia_web/templates/layout/app.html.eex:102
+#: lib/ambrosia_web/templates/layout/app.html.eex:142
 msgid "Log out"
 msgstr ""

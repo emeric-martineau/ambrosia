@@ -4,12 +4,13 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserControllerTest do
   alias Ambrosia.{Repo, Users.User}
 
   @password "secret1234"
+  @email "test@example.com"
 
   setup %{conn: conn} do
     # user = %Ambrosia.Users.User{email: "test@example.com", id: 1}
     user =
       %Ambrosia.Users.User{}
-      |> User.changeset(%{email: "test@example.com", password: @password, password_confirmation: @password})
+      |> User.changeset(%{email: @email, password: @password, password_confirmation: @password, locale: "en"})
       |> Repo.insert!()
 
     authed_conn = Pow.Plug.assign_current_user(conn, user, [])
@@ -59,5 +60,25 @@ defmodule AmbrosiaWeb.Users.AdvancedConfigUserControllerTest do
   test "Unauthorized profile page access", %{conn: conn} do
     conn = get(conn, Routes.advanced_config_user_path(conn, :index))
     assert redirected_to(conn) =~  Routes.pow_session_path(conn, :new)
+  end
+
+  test "Update user locale and test i18n with user locale", %{authed_conn: authed_conn} do
+    # Create tocken
+    post(
+      authed_conn,
+      Routes.advanced_config_user_path(authed_conn, :update),
+      %{
+        "user_locale" => "fr"
+      })
+
+    user = Ambrosia.Users.User
+    |> Repo.get_by(email: @email)
+
+    assert user.locale == "fr"
+
+    conn = Pow.Plug.assign_current_user(authed_conn, user, [])
+    |> get("/")
+
+    assert html_response(conn, 200) =~ "<a class=\"active item\" href=\"/\">Accueil</a>"
   end
 end

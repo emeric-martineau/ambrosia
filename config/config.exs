@@ -41,4 +41,10 @@ config :ambrosia, :pow,
        routes_backend: AmbrosiaWeb.Pow.Routes
 
 # Internationalization
-config :ambrosia, AmbrosiaWeb.Gettext, default_locale: "en", locales: ~w(en fr)
+config :ambrosia, AmbrosiaWeb.Gettext, default_locale: "en", locales: ~w(en fr), locales_text: [en: "English", fr: "Français"]
+
+config :ambrosia,
+      i18n: [
+        cookie_key: "locale",
+        gettext: AmbrosiaWeb.Gettext,
+      ]
