@@ -88,14 +88,11 @@ defmodule AmbrosiaWeb.I18n do
   # Plug.Conn.get_req_header return a list like
   # ["fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7"]
   #
-  # Get only first item.
-  #
-  # TODO, manage:
   # Accept-Language: <langue>        -> en
   # Accept-Language: <locale>        -> fr-FR
   # Accept-Language: *
-
-  # // Multi type:
+  #
+  # Multi type:
   # Accept-Language: fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5
   defp extract_language_from_header([lang | _]), do: String.split(lang, ",", trim: true)
   

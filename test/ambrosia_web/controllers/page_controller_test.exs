@@ -120,9 +120,7 @@ defmodule AmbrosiaWeb.PageControllerTest do
     assert html_response(conn, 200) =~ "Thank you for yout registration!"
   end
 
-  # TODO test change lang
-
-  test "Test set nez locqle", %{conn: conn} do
+  test "Test set locale", %{conn: conn} do
     cookie_key = Application.get_env(:ambrosia, :i18n)
     |> Keyword.get(:cookie_key)
 
@@ -133,5 +131,32 @@ defmodule AmbrosiaWeb.PageControllerTest do
     |> Plug.Conn.fetch_cookies()
 
     assert cookies[cookie_key] == "fr"
+
+    conn = get(conn, Routes.pow_session_path(conn, :new))
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
+  end
+
+  test "Test locale from http header with ponderation", %{conn: conn} do
+    conn = conn
+      |> Plug.Conn.put_req_header("accept-language", "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7")
+      |> get(Routes.pow_session_path(conn, :new))
+
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
+  end
+
+  test "Test locale from http header with ponderation just last available", %{conn: conn} do
+    conn = conn
+      |> Plug.Conn.put_req_header("accept-language", "zz;q=0.9,ttt;q=0.8,fr;q=0.7")
+      |> get(Routes.pow_session_path(conn, :new))
+
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
+  end
+
+  test "Test locale from http header", %{conn: conn} do
+    conn = conn
+      |> Plug.Conn.put_req_header("accept-language", "fr")
+      |> get(Routes.pow_session_path(conn, :new))
+
+    assert html_response(conn, 200) =~ "<h1>Connexion</h1>"
   end
 end
